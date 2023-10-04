@@ -2,11 +2,11 @@
 
 
 
-Code for the Paper "[MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts](https://arxiv.org/abs/2304.09842)".
+Code for the Paper "[MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts](https://arxiv.org/abs/2310.02255)".
 
 :bell: If you have any questions or suggestions, please don't hesitate to let us know. You can directly email [Pan Lu](https://lupantech.github.io/) using the email address lupantech@gmail.com, comment on the [Twitter](https://twitter.com/lupantech), or post an issue on this repository.
 
-[[Project Page](https://mathvista.github.io/)] [[Paper](https://arxiv.org/abs/2304.09842)]
+[[Project Page](https://mathvista.github.io/)] [[Paper](https://arxiv.org/abs/2310.02255)]
 
 <p align="center">
     <img src="assets/mathvista.png" width="15%"> <br>
@@ -18,7 +18,7 @@ Code for the Paper "[MathVista: Evaluating Mathematical Reasoning of Foundation 
 
 ## 💥 News 💥
 
-- **[2023.10.03]** Our paper is now accessible at https://arxiv.org/abs/2304.09842.
+- **[2023.10.03]** Our paper is now accessible at https://arxiv.org/abs/2310.02255.
 
 
 
@@ -30,7 +30,7 @@ To bridge this gap, we present **MathVista**, a benchmark designed to amalgamate
 
 We conduct **a comprehensive evaluation of 11 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs), and **early experiments with GPT-4V**. The best-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. Given this significant gap, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
 
-For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2304.09842.pdf).
+For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2310.02255.pdf).
 
 
 
@@ -199,7 +199,7 @@ If you find **MathVista** useful for your your research and applications, please
 @article{lu2023mathvista,
   title={MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
   author={Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
-  journal={arXiv preprint arXiv:2304.09842},
+  journal={arXiv preprint arXiv:2310.02255},
   year={2023}
 }
 ```
