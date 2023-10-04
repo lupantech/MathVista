@@ -196,7 +196,7 @@ Fantastic! I'm always open to engaging discussions, collaborations, or even just
 If you find **MathVista** useful for your your research and applications, please kindly cite using this BibTeX:
 
 ```latex
-@article{lu2023chameleon,
+@article{lu2023mathvista,
   title={MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
   author={Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
   journal={arXiv preprint arXiv:2304.09842},
