@@ -176,7 +176,7 @@ print(dataset["test"][0])
 
 The dataset is provided in json format and contains the following attributes:
 
-```json
+```
 {
     "question": [string] The question text,
     "image": [string] A file path pointing to the associated image,
