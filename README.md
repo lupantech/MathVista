@@ -16,7 +16,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 :bell: If you have any questions or suggestions, please don't hesitate to let us know. You can comment on the [Twitter](https://twitter.com/lupantech/status/1709757360758288448), or post an issue on this repository.
 
-[[Webpage](https://mathvista.github.io/)] [[Paper](https://arxiv.org/abs/2310.02255)] [[Hugging Face Dataset](https://huggingface.co/datasets/AI4Math/MathVista)] [[Leaderboard](https://mathvista.github.io/#leaderboard)] [[Twitter](https://twitter.com/lupantech/status/1709757360758288448)]
+[[Webpage](https://mathvista.github.io/)] [[Paper](https://arxiv.org/abs/2310.02255)] [[Huggingface Dataset](https://huggingface.co/datasets/AI4Math/MathVista)] [[Leaderboard](https://mathvista.github.io/#leaderboard)] [[Visualization](https://mathvista.github.io/#visualization)] [[Result Explorer](https://mathvista.github.io/#explorer)] [[Twitter](https://twitter.com/lupantech/status/1709757360758288448)]
 
 <p align="center">
     <img src="assets/mathvista.png" width="15%"> <br>
@@ -25,45 +25,73 @@ For more details, please refer to the project page with dataset exploration and 
 
 ## 💥 News 💥
 
+- **[2023.10.16]** 🔍 We are working on a comparative study on the **GPT-4V** model. Stay tuned for the detailed report! 📑.
+- **[2023.10.15]** We finished the manual evaluation of **GPT-4V** with the playground chatbot on the *testmini* set on **MathVista**. 🚀 GPT-4V achieves a substantial gain of **15.1%** ⬆️ over Bard, reaching a new record of **49.9%**! 🎉
 - **[2023.10.15]** Our dataset is now accessible at [Huggingface Datasets](https://huggingface.co/datasets/AI4Math/MathVista).
+- **[2023.10.15]** Our dataset is now accessible at [Paper With Code](https://paperswithcode.com/dataset/mathvista).
+- **[2023.10.03]** The top-performing model, 🎭 **Multimodal Bard**, achieved a score of **34.8%** on the *testmini* set for **MathVista** 📊.
+- **[2023.10.03]** Our work was featured by [Aran Komatsuzaki](https://twitter.com/arankomatsuzaki) on [Twitter](https://twitter.com/arankomatsuzaki/status/1709380140717809992). Thanks!
 - **[2023.10.03]** Our paper is now accessible at https://arxiv.org/abs/2310.02255.
 
+## About MathVista
+
+We present **MathVista**, a benchmark designed to amalgamate challenges from **diverse mathematical and visual tasks**. We first taxonomize the key task types, reasoning skills, and visual contexts from the literature to guide our selection from **28 existing math-focused and visual question answering datasets**. Then, **we construct three new datasets, IQTest, FunctionQA, and PaperQA**, to accommodate for missing types of visual contexts. The problems featured often require deep visual understanding beyond OCR or image captioning, and compositional reasoning with rich domain-specific tools, thus posing a notable challenge to existing models.
+
+<p align="center">
+    <img src="assets/data-composition.png" width="30%"> <br>
+  Source dataset distribution of <b>MathVista</b>.
+</p>
 
 
-## 🔥 Leaderboard 🔥
+We conduct **a comprehensive evaluation of 11 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs), and **early experiments with GPT-4V**. The best-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. Given this significant gap, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
 
-🔔 The leaderboard is continuously being updated. If you have any new results to contribute, please feel free to reach out to us.
+<p align="center">
+    <img src="assets/tease_scores.png" width="80%"> <br>
+  Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
+</p>
 
-| **#** | **Model**                      | **Method** | **Source**                               | **Date**   | **ALL**  | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
-| ----- | ------------------------------ | ---------- | ---------------------------------------- | ---------- | -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| -     | **Human**                      | -          | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **60.3** | 59.7    | 48.4    | 73.0    | 63.2    | 55.9    | 50.9    | 59.2    | 51.4    | 40.7    | 53.8    | 64.9    | 63.9    |
-| 1     | **Multimodal Bard 🥇**          | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
-| 2     | **PoT GPT-4 (Caption+OCR) 🥈**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
-| 3     | **CoT GPT-4 (Caption+OCR) 🥉**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
-| 4     | **CoT ChatGPT (Caption+OCR)**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
-| 5     | **CoT Claude-2 (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
-| 6     | **PoT ChatGPT (Caption+OCR)**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
-| 7     | **LLaVA (LLaMA-2-13B)**        | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
-| 8     | **InstructBLIP (Vicuna-7B)**   | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
-| 9     | **LLaVAR**                     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
-| 10    | **LLaMA-Adapter-V2 (7B)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
-| 11    | **miniGPT4 (LLaMA-2-7B)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
-| 12    | **mPLUG-Owl (LLaMA-7B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
-| 13    | **IDEFICS (9B-Instruct)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
-| 14    | **Random Chance**              | -          | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **17.9** | 18.2    | 21.6    | 3.8     | 19.6    | 26.3    | 21.7    | 14.7    | 20.1    | 13.5    | 8.3     | 17.2    | 16.3    |
 
-Some notations in the table
+For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2310.02255.pdf).
 
-- GPT-4: the `gpt-4-0613` engine
+## 🏆 Leaderboard 🏆
+
+🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this mail](mailto:lupantech@gmail.com) with your result json file (the [result file example](https://github.com/lupantech/MathVista/blob/main/results/random/output_random_guess.json)).
+
+Accuracy scores on the **testmini** subset (1,000 examples):
+
+| **#** | **Model**                            | **Method** | **Source**                               | **Date**   | **ALL**  | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
+| ----- | ------------------------------------ | ---------- | ---------------------------------------- | ---------- | -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| -     | **Human**                            | -          | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **60.3** | 59.7    | 48.4    | 73.0    | 63.2    | 55.9    | 50.9    | 59.2    | 51.4    | 40.7    | 53.8    | 64.9    | 63.9    |
+| 1     | **<u>GPT-4V (Playgroud)</u>🥇**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-15 | **49.9** | 43.1    | 50.5    | 57.5    | 65.2    | 38.0    | 53.0    | 49.0    | 51.0    | 21.6    | 20.1    | 63.1    | 55.8    |
+| 2     | **<u>Multimodal Bard</u> 🥈**         | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
+| 3     | **<u>PoT GPT-4 (Caption+OCR)</u> 🥉** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
+| 4     | **CoT GPT-4 (Caption+OCR)**          | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
+| 5     | **CoT ChatGPT (Caption+OCR)**        | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
+| 6     | **CoT Claude-2 (Caption+OCR)**       | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
+| 7     | **PoT ChatGPT (Caption+OCR)**        | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
+| 8     | **LLaVA (LLaMA-2-13B)**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
+| 9     | **InstructBLIP (Vicuna-7B)**         | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
+| 10    | **LLaVAR**                           | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
+| 11    | **LLaMA-Adapter-V2 (7B)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
+| 12    | **miniGPT4 (LLaMA-2-7B)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
+| 13    | **mPLUG-Owl (LLaMA-7B)**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
+| 14    | **IDEFICS (9B-Instruct)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
+| 15    | **Random Chance**                    | -          | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **17.9** | 18.2    | 21.6    | 3.8     | 19.6    | 26.3    | 21.7    | 14.7    | 20.1    | 13.5    | 8.3     | 17.2    | 16.3    |
+
+Some notations in the table:
+
+- **GPT-4V (Playgroud)**: the launched playground at https://chat.openai.com/?model=gpt-4; experimental dates range from Oct 7, 2023, to Oct 15, 2023
+
+- **GPT-4**: the `gpt-4-0613` engine
 
 - **Method types**
   -  **LMM 🖼️:** Large Multimodal Model
-  -  **Tool 🛠️:** Tool-augmented Large Language Model.
+  -  **Tool 🛠️:** Tool-augmented Large Language Model
 
 - **Task types:** 
   - **FQA:** figure question answering
   - **GPS:** geometry problem solving
-  - **MWP:** math word problem
+  - **MWP:** math word problem solving
   -  **TQA:** textbook question answering
   - **VQA:** visual question answering
 - **Mathematical reasoning types:** 
@@ -75,26 +103,7 @@ Some notations in the table
   - **SCI:** scientific reasoning 
   - **STA:** statistical reasoning
 
-The leaderboard for the *test* set (5,141 examples) and the automatic evaluation on [CodaLab](https://codalab.org/) are under construction. 
-
-## About MathVista
-
-We present **MathVista**, a benchmark designed to amalgamate challenges from **diverse mathematical and visual tasks**. We first taxonomize the key task types, reasoning skills, and visual contexts from the literature to guide our selection from **28 existing math-focused and visual question answering datasets**. Then, **we construct three new datasets, IQTest, FunctionQA, and PaperQA**, to accommodate for missing types of visual contexts. The problems featured often require deep visual understanding beyond OCR or image captioning, and compositional reasoning with rich domain-specific tools, thus posing a notable challenge to existing models.
-
-<p align="center">
-    <img src="assets/data-composition.png" width="40%"> <br>
-  Source dataset distribution of <b>MathVista</b>.
-</p>
-
-We conduct **a comprehensive evaluation of 11 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs), and **early experiments with GPT-4V**. The best-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. Given this significant gap, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
-
-<p align="center">
-    <img src="assets/tease_scores.png" width="90%"> <br>
-  Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
-</p>
-
-For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2310.02255.pdf).
-
+🔔 The leaderboard for the *test* set (5,141 examples) and the automatic evaluation on [CodaLab](https://codalab.org/) are under construction. 
 
 
 ## Dataset Examples
@@ -104,8 +113,7 @@ Examples of our newly annotated datasets: IQTest, FunctionQA, and PaperQA:
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/our_new_3_datasets.png" style="zoom:40%;" />
 
 <details>
-<summary>Click to expand/collapse more examples</summary>
-
+<summary>🔍 Click to expand/collapse more examples</summary>
 
 Examples of seven mathematical reasoning skills:
 
@@ -125,7 +133,7 @@ Examples of seven mathematical reasoning skills:
 
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/skills/geo.png" style="zoom:40%;" />
 
-5. Numeric common sense
+5. Numeric Commonsense Reasoning
 
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/skills/num.png" style="zoom:40%;" />
 
@@ -136,7 +144,6 @@ Examples of seven mathematical reasoning skills:
 7. Logical Reasoning
 
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/skills/log.png" style="zoom:40%;" />
-
 </details>
 
 ## Dataset Usage
@@ -172,6 +179,14 @@ dataset["testmini"][0]['decoded_image'] # display the image
 print(dataset["test"][0])
 ```
 
+We provide the jpg format of the images. You can download and zip them by:
+
+```sh
+cd data
+wget https://huggingface.co/datasets/AI4Math/MathVista/resolve/main/images.zip
+unzip & rm images.zip
+```
+
 ### Data Format
 
 The dataset is provided in json format and contains the following attributes:
@@ -205,7 +220,12 @@ The dataset is provided in json format and contains the following attributes:
 
 ### Data Visualization
 
-You can explore the dataset in an interactive way [here](https://mathvista.github.io/#visualization).
+🎰 You can explore the dataset in an interactive way [here](https://mathvista.github.io/#visualization).
+
+<details>
+<summary>Click to expand/collapse the visualization page screeshot.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data_visualizer.png" style="zoom:40%;" />
+</details>
 
 ### Data Source
 
