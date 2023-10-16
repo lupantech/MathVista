@@ -197,9 +197,9 @@ The dataset is provided in json format and contains the following attributes:
         "task": [string] The task of the problem, e.g., "geometry problem solving",
         "context": [string] The visual context type of the associated image,
         "grade": [string] The grade level of the problem, e.g., "high school",
-        "skills": [list] A list of mathematical reasoning skills that the problem tests,
-		},
-		"query": [string] the query text used as input (prompt) for the evaluation model
+        "skills": [list] A list of mathematical reasoning skills that the problem tests
+    },
+    "query": [string] the query text used as input (prompt) for the evaluation model
 }
 ```
 
