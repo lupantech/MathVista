@@ -55,7 +55,7 @@ For more details, you can find our project page [here](https://mathvista.github.
 
 ## 🏆 Leaderboard 🏆
 
-🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this mail](mailto:lupantech@gmail.com) with your result json file (the [result file example](https://github.com/lupantech/MathVista/blob/main/results/random/output_random_guess.json)).
+🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this mail](mailto:lupantech@gmail.com) with your result json file (the result [template](https://github.com/lupantech/MathVista/blob/main/results/output_testmini_template_for_leaderboard_submission.json) for *testmini* and the [template](https://github.com/lupantech/MathVista/blob/main/results/output_test_template_for_leaderboard_submission.json) for *test*).
 
 Accuracy scores on the **testmini** subset (1,000 examples):
 
