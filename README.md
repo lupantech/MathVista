@@ -81,7 +81,7 @@ The leaderboard for the *test* set (5,141 examples) and the automatic evaluation
 
 We present **MathVista**, a benchmark designed to amalgamate challenges from **diverse mathematical and visual tasks**. We first taxonomize the key task types, reasoning skills, and visual contexts from the literature to guide our selection from **28 existing math-focused and visual question answering datasets**. Then, **we construct three new datasets, IQTest, FunctionQA, and PaperQA**, to accommodate for missing types of visual contexts. The problems featured often require deep visual understanding beyond OCR or image captioning, and compositional reasoning with rich domain-specific tools, thus posing a notable challenge to existing models.
 
-<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data-composition.png" style="zoom:20%;" />
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data-composition.png" style="zoom:10%;" />
 
 We conduct **a comprehensive evaluation of 11 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs), and **early experiments with GPT-4V**. The best-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. Given this significant gap, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
 
