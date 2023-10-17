@@ -491,7 +491,7 @@ We thank [Hritik Bansal](https://sites.google.com/view/hbansal) and the [VisIT-B
 <summary>Click to expand/collapse the example.</summary>
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/53.png" style="zoom:40%;" />
 </details>
-We stored the result files from different models in the [results](https://github.com/lupantech/MathVista/tree/main/results) directory.
+We stored the result files from different models in the [results](https://github.com/lupantech/MathVista/tree/main/results/) directory.
 
 🐙 For visualization of these results, visit our [exploration](https://mathvista.github.io/#explorer) page.
 
