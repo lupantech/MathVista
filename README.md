@@ -232,6 +232,7 @@ The dataset is provided in json format and contains the following attributes:
 <summary>Click to expand/collapse the visualization page screeshot.</summary>
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data_visualizer.png" style="zoom:40%;" />
 </details>
+
 ### Usage Demos
 
 We offer a few demo examples for using the dataset, as follows:
@@ -542,6 +543,6 @@ Explore our additional research on **large language models** and **large multimo
 
 Here are the key contributors to this project:
 
-[Pan Lu](https://lupantech.github.io/)^1^, [Hritik Bansal](https://sites.google.com/view/hbansal)^1^, [Tony Xia](https://tonyxia2001.github.io/)^1^, [Jiacheng Liu](https://liujch1998.github.io/)^2^, [Chunyuan Li](https://chunyuan.li/)^3^, [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)^2^, [Hao Cheng](https://sites.google.com/site/hcheng2site/Home)^3^, [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/)^1^, [Michel Galley](https://www.microsoft.com/en-us/research/people/mgalley/?from=https://research.microsoft.com/~mgalley&type=exact)^3^, [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/)^3^
+[Pan Lu](https://lupantech.github.io/)<sup>1</sup>, [Hritik Bansal](https://sites.google.com/view/hbansal)<sup>1</sup>, [Tony Xia](https://tonyxia2001.github.io/)<sup>1</sup>, [Jiacheng Liu](https://liujch1998.github.io/)<sup>2</sup>, [Chunyuan Li](https://chunyuan.li/)<sup>3</sup>, [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)<sup>2</sup>, [Hao Cheng](https://sites.google.com/site/hcheng2site/Home)<sup>3</sup>, [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/)<sup>1</sup>, [Michel Galley](https://www.microsoft.com/en-us/research/people/mgalley/?from=https://research.microsoft.com/~mgalley&type=exact)<sup>3</sup>, [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/)<sup>3</sup>
 
-^1^University of California, Los Angeles, ^2^University of Washington, ^3^Microsoft Research
+<sup>1</sup>University of California, Los Angeles, <sup>2</sup>University of Washington, <sup>3</sup>Microsoft Research
