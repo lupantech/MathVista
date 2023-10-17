@@ -33,29 +33,32 @@ For more details, please refer to the project page with dataset exploration and 
 - **[2023.10.03]** Our work was featured by [Aran Komatsuzaki](https://twitter.com/arankomatsuzaki) on [Twitter](https://twitter.com/arankomatsuzaki/status/1709380140717809992). Thanks!
 - **[2023.10.03]** Our paper is now accessible at https://arxiv.org/abs/2310.02255.
 
-## About MathVista
+## 👀 About MathVista
 
 We present **MathVista**, a benchmark designed to amalgamate challenges from **diverse mathematical and visual tasks**. We first taxonomize the key task types, reasoning skills, and visual contexts from the literature to guide our selection from **28 existing math-focused and visual question answering datasets**. Then, **we construct three new datasets, IQTest, FunctionQA, and PaperQA**, to accommodate for missing types of visual contexts. The problems featured often require deep visual understanding beyond OCR or image captioning, and compositional reasoning with rich domain-specific tools, thus posing a notable challenge to existing models.
 
 <p align="center">
-    <img src="assets/data-composition.png" width="30%"> <br>
+    <img src="assets/data-composition.png" width="40%"> <br>
   Source dataset distribution of <b>MathVista</b>.
 </p>
+
 We conduct **a comprehensive evaluation of 12 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs. The top-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. The performance of **GPT-4V** is astounding: it achieves a 15.1% improvement over Bard! But it still lags behind humans by 10.4%.
 
 <p align="center">
-    <img src="assets/score_leaderboard_gpt4v.png" width="60%"> <br>
+    <img src="assets/score_leaderboard_gpt4v.png" width="70%"> <br>
   Accuracy scores the testmini set (1,000 examples) of <b>MathVista</b>.
 </p>
+
 
 Given these significant gaps, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
 
 <p align="center">
-    <img src="assets/tease_scores.png" width="70%"> <br>
+    <img src="assets/tease_scores.png" width="80%"> <br>
   Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
 </p>
 
-For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2310.02255.pdf).
+
+For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/abs/2310.02255).
 
 ## 🏆 Leaderboard 🏆
 
@@ -110,11 +113,13 @@ Some notations in the table:
 🔔 The leaderboard for the *test* set (5,141 examples) and the automatic evaluation on [CodaLab](https://codalab.org/) are under construction. 
 
 
-## Dataset Examples
+## 📊 Dataset Examples
 
 Examples of our newly annotated datasets: **IQTest**, **FunctionQA**, and **PaperQA**:
 
-<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/our_new_3_datasets.png" style="zoom:40%;" />
+<p align="center">
+    <img src="assets/our_new_3_datasets.png" width="60%"> <br>
+</p>
 
 <details>
 <summary>🔍 Click to expand/collapse more examples</summary>
@@ -148,9 +153,14 @@ Examples of seven mathematical reasoning skills:
 7. Logical Reasoning
 
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/skills/log.png" style="zoom:40%;" />
+
 </details>
 
-## Dataset Usage
+## 📖 Dataset Usage
+
+### Data Source
+
+The **MathVista** dataset is derived from three newly collected datasets: IQTest, FunctionQA, and Paper, as well as 28 other source datasets. Details can be found in the [source.json](https://huggingface.co/datasets/AI4Math/MathVista/blob/main/source.json) file. All these source datasets have been preprocessed and labeled for evaluation purposes.
 
 ### Data Downloading
 
@@ -222,14 +232,17 @@ The dataset is provided in json format and contains the following attributes:
 <summary>Click to expand/collapse the visualization page screeshot.</summary>
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data_visualizer.png" style="zoom:40%;" />
 </details>
+### Usage Demos
 
-### Data Source
+We offer a few demo examples for using the dataset, as follows:
 
-The **MathVista** dataset is derived from three newly collected datasets: IQTest, FunctionQA, and Paper, as well as 28 other source datasets. Details can be found in the [source.json](https://huggingface.co/datasets/AI4Math/MathVista/blob/main/source.json) file. All these source datasets have been preprocessed and labeled for evaluation purposes.
+- Use the Bard API for inference: [bard_local_demo.ipynb](https://github.com/lupantech/MathVista/blob/main/jupyter_notebook_demos/bard_local_demo.ipynb)
 
-## Evaluations on MathVista
+Stay tuned for more demos coming soon!
 
-### 🐙 Requirements (Optional)
+## 🔮 Evaluations on MathVista
+
+### Requirements (Optional)
 
 Install the Python dependencies if you would like to reproduce our results for ChatGPT, GPT-4, Claude-2, and Bard:
 
@@ -263,7 +276,7 @@ This step might be optional if you prefer to use the Hugging Face format of the 
 
 Recent foundation models have been trained to generate longer responses instead of brief text. As such, we propose a new strategy for benchmarking MathVista. This evaluation process comprises three stages:
 
-**(Step 1) Response Generation **([generate_response.py](https://github.com/lupantech/MathVista/blob/main/evaluation/generate_response.py)): The models generate responses based on the given input query (prompt). This input query integrates the task description, the question, choices, and metadata. Such a design encourage the models yield responses in the desired format, subsequently enhancing the overall evaluation scores. An example of such an input query is:
+**(Step 1) Response Generation** ([generate_response.py](https://github.com/lupantech/MathVista/blob/main/evaluation/generate_response.py)): The models generate responses based on the given input query (prompt). This input query integrates the task description, the question, choices, and metadata. Such a design encourage the models yield responses in the desired format, subsequently enhancing the overall evaluation scores. An example of such an input query is:
 
 ```
 Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.
@@ -313,6 +326,25 @@ Extracted answer: B
 ```
 
 **(Step 3) Score Calculation** ([calculate_score.py](https://github.com/lupantech/MathVista/blob/main/evaluation/extract_answer.py)): Finally, the extracted answer is normalized to a required answer format (e.g., an option letter or an integer), and the target metric scores are computed.
+
+## 📝 Evaluation Scripts of Our Models
+
+To execute the evaluation scripts in our paper, ensure your `data` folder has the following structure:
+
+```
+├── query.json
+├── test.json
+├── testmini.json
+├── images
+    ├── 1.jpg
+    ├── 2.jpg
+    └── ...
+└── texts
+    ├── captions_bard.json
+    └── ocrs_easyocr.json
+```
+
+Additionally, ensure that the API keys for ChatGPT, GPT-4, Claude-2, and Bard are properly set up.
 
 ### Evaluating Multimodal Bard
 
@@ -423,7 +455,7 @@ python calculate_score.py \
 
 To run more models, please check out the running scripts at [`scripts`](https://github.com/lupantech/MathVista/tree/main/scripts).
 
-## Evaluation Results
+## 📈 Evaluation Results
 
 <details>
 <summary>Click to expand/collapse the examples.</summary>
@@ -454,9 +486,11 @@ To run more models, please check out the running scripts at [`scripts`](https://
 <summary>Click to expand/collapse the example.</summary>
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/53.png" style="zoom:40%;" />
 </details>
-To explore more result examples from different models, please check out the result [exploration page](https://mathvista.github.io/#explorer).
+We stored the result files from different models in the following directory: [results](https://github.com/lupantech/MathVista/tree/main/results).
 
-## License
+For visualization of these results, visit our [exploration](https://mathvista.github.io/#explorer) page.
+
+## 📜 License
 
 The new contributions to our dataset are distributed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, including
 
@@ -488,9 +522,26 @@ If you find **MathVista** useful for your your research and applications, please
 }
 ```
 
-## Related Work
+## 🧠 Related Work
+
+Explore our additional research on **large language models** and **large multimodal models** , focusing on mathematical reasoning, scientific reasoning, and multimodal reasoning:
 
 - **[Chameleon]** [Chameleon: Plug-and-Play Compositional Reasoning with Large Language Models](https://chameleon-llm.github.io/)
 - **[ScienceQA]** [Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering](https://scienceqa.github.io/)
 - **[LLaMA-Adapter]** [LLaMA-Adapter: Efficient Fine-tuning of Language Models with Zero-init Attention](https://github.com/OpenGVLab/LLaMA-Adapter)
 - **[LLaMA-Adapter V2]** [LLaMA-Adapter V2: Parameter-Efficient Visual Instruction Model](https://github.com/OpenGVLab/LLaMA-Adapter)
+- **[DL4MATH]** [A Survey of Deep Learning for Mathematical Reasoning](https://arxiv.org/abs/2212.10535)
+- **[PromptPG]** [Dynamic Prompt Learning via Policy Gradient for Semi-structured Mathematical Reasoning](https://promptpg.github.io/)
+- **[SciBench]** [SciBench: Evaluating College-Level Scientific Problem-Solving Abilities of Large Language Models](https://arxiv.org/abs/2307.10635)
+- **[TheoremQA]** [TheoremQA: A Theorem-driven Question Answering dataset](https://arxiv.org/abs/2305.12524)
+- **[Līla]** [A Unified Benchmark for Mathematical Reasoning](https://lila.apps.allenai.org/)
+- **[IconQA]** [IconQA: A New Benchmark for Abstract Diagram Understanding and Visual Language Reasoning](https://iconqa.github.io/)
+- **[Inter-GPS]** [Inter-GPS: Interpretable Geometry Problem Solving with Formal Language and Symbolic Reasoning](https://lupantech.github.io/inter-gps/)
+
+## 🤝 Contributors
+
+Here are the key contributors to this project:
+
+[Pan Lu](https://lupantech.github.io/)^1^, [Hritik Bansal](https://sites.google.com/view/hbansal)^1^, [Tony Xia](https://tonyxia2001.github.io/)^1^, [Jiacheng Liu](https://liujch1998.github.io/)^2^, [Chunyuan Li](https://chunyuan.li/)^3^, [Hannaneh Hajishirzi](https://homes.cs.washington.edu/~hannaneh/)^2^, [Hao Cheng](https://sites.google.com/site/hcheng2site/Home)^3^, [Kai-Wei Chang](http://web.cs.ucla.edu/~kwchang/)^1^, [Michel Galley](https://www.microsoft.com/en-us/research/people/mgalley/?from=https://research.microsoft.com/~mgalley&type=exact)^3^, [Jianfeng Gao](https://www.microsoft.com/en-us/research/people/jfgao/)^3^
+
+^1^University of California, Los Angeles, ^2^University of Washington, ^3^Microsoft Research
