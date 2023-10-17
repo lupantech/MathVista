@@ -452,9 +452,13 @@ python calculate_score.py \
 --score_file scores_gpt4_2shot_code_use_caption_ocr.json
 ```
 
-### Evaluating More Models
+### Evaluating More Settings
 
-To run more models, please check out the running scripts at [`scripts`](https://github.com/lupantech/MathVista/tree/main/scripts).
+For additional settings for large language models and other baselines, please refer to the running scripts available in the [`scripts`](https://github.com/lupantech/MathVista/tree/main/scripts) directory.
+
+### Evaluating Large Multimodal Models
+
+We thank [Hritik Bansal](https://sites.google.com/view/hbansal) and the [VisIT-Bench](https://github.com/mlfoundations/VisIT-Bench/tree/main) project for providing easy-to-use [codes](https://github.com/mlfoundations/VisIT-Bench/tree/main/baselines) for evaluating most of the large multimodal models included in our paper.
 
 ## 📈 Evaluation Results
 
