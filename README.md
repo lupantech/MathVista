@@ -41,21 +41,25 @@ We present **MathVista**, a benchmark designed to amalgamate challenges from **d
     <img src="assets/data-composition.png" width="30%"> <br>
   Source dataset distribution of <b>MathVista</b>.
 </p>
-
-
-We conduct **a comprehensive evaluation of 11 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs), and **early experiments with GPT-4V**. The best-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. Given this significant gap, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
+We conduct **a comprehensive evaluation of 12 prominent open-source and proprietary foundation models** (LLMs, LLMs augmented with tools, and LMMs. The top-performing model, Multimodal Bard, achieves only **58%** of human performance (34.8% vs 60.3%), indicating ample room for further improvement. The performance of **GPT-4V** is astounding: it achieves a 15.1% improvement over Bard! But it still lags behind humans by 10.4%.
 
 <p align="center">
-    <img src="assets/tease_scores.png" width="80%"> <br>
-  Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
+    <img src="assets/score_leaderboard_gpt4v.png" width="60%"> <br>
+  Accuracy scores the testmini set (1,000 examples) of <b>MathVista</b>.
 </p>
 
+Given these significant gaps, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
+
+<p align="center">
+    <img src="assets/tease_scores.png" width="70%"> <br>
+  Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
+</p>
 
 For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/pdf/2310.02255.pdf).
 
 ## 🏆 Leaderboard 🏆
 
-🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this mail](mailto:lupantech@gmail.com) with your result json file (the result [template](https://github.com/lupantech/MathVista/blob/main/results/output_testmini_template_for_leaderboard_submission.json) for *testmini* and the [template](https://github.com/lupantech/MathVista/blob/main/results/output_test_template_for_leaderboard_submission.json) for *test*).
+🚨🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this mail](mailto:lupantech@gmail.com) with your result json file (the result [template](https://github.com/lupantech/MathVista/blob/main/results/output_testmini_template_for_leaderboard_submission.json) for *testmini* and the [template](https://github.com/lupantech/MathVista/blob/main/results/output_test_template_for_leaderboard_submission.json) for *test*).
 
 Accuracy scores on the **testmini** subset (1,000 examples):
 
@@ -108,7 +112,7 @@ Some notations in the table:
 
 ## Dataset Examples
 
-Examples of our newly annotated datasets: IQTest, FunctionQA, and PaperQA:
+Examples of our newly annotated datasets: **IQTest**, **FunctionQA**, and **PaperQA**:
 
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/our_new_3_datasets.png" style="zoom:40%;" />
 
@@ -179,14 +183,6 @@ dataset["testmini"][0]['decoded_image'] # display the image
 print(dataset["test"][0])
 ```
 
-We provide the jpg format of the images. You can download and zip them by:
-
-```sh
-cd data
-wget https://huggingface.co/datasets/AI4Math/MathVista/resolve/main/images.zip
-unzip & rm images.zip
-```
-
 ### Data Format
 
 The dataset is provided in json format and contains the following attributes:
@@ -231,23 +227,94 @@ The dataset is provided in json format and contains the following attributes:
 
 The **MathVista** dataset is derived from three newly collected datasets: IQTest, FunctionQA, and Paper, as well as 28 other source datasets. Details can be found in the [source.json](https://huggingface.co/datasets/AI4Math/MathVista/blob/main/source.json) file. All these source datasets have been preprocessed and labeled for evaluation purposes.
 
-## 🐙 Requirements
+## Evaluations on MathVista
+
+### 🐙 Requirements (Optional)
+
+Install the Python dependencies if you would like to reproduce our results for ChatGPT, GPT-4, Claude-2, and Bard:
+
+```sh
+pip install openai # for ChatGPT and GPT-4
+pip install anthropic # for Claude-2
+pip install bardapi # for Bard
+```
+
+For more details, please refer to:
 
 - [OpenAI API key](https://platform.openai.com/account/api-keys)
 - [Claude API Key](https://docs.anthropic.com/claude/reference/getting-started-with-the-api)
 - [Bard API Key](https://bard.google.com/)
 
-Install the python dependencies if you would like to reproduce our results:
+If you are considering evaluating your own model, these dependencies might be optional.
+
+### Downloading Images (Optional)
+
+We provide images in the JPG format. You can download and unzip them using the following commands:
+
+```sh
+cd data
+wget https://huggingface.co/datasets/AI4Math/MathVista/resolve/main/images.zip
+unzip & rm images.zip
+```
+
+This step might be optional if you prefer to use the Hugging Face format of the data.
+
+### Evaluation Pipelines
+
+Recent foundation models have been trained to generate longer responses instead of brief text. As such, we propose a new strategy for benchmarking MathVista. This evaluation process comprises three stages:
+
+**(Step 1) Response Generation **([generate_response.py](https://github.com/lupantech/MathVista/blob/main/evaluation/generate_response.py)): The models generate responses based on the given input query (prompt). This input query integrates the task description, the question, choices, and metadata. Such a design encourage the models yield responses in the desired format, subsequently enhancing the overall evaluation scores. An example of such an input query is:
 
 ```
-pip install openai
-pip install anthropic
-pip install bardapi
+Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.
+Question: Find $m\\angle H$
+Choices:
+(A) 97
+(B) 102
+(C) 107
+(D) 122
 ```
 
-## Run Experiments on MathVista
+The task description is defined as follows:
 
-### Multimodal Bard
+| Question type   | Answer type | Task instruction                                             |
+| --------------- | ----------- | ------------------------------------------------------------ |
+| Multiple-choice | Text        | Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end. |
+| Free-form       | Integer     | Please answer the question requiring an integer answer and provide the final value, e.g., 1, 2, 3, at the end. |
+| Free-form       | Float (1)   | Please answer the question requiring a floating-point number with one decimal place and provide the final value, e.g., 1.2, 1.3, 1.4, at the end. |
+| Free-form       | Float (2)   | Please answer the question requiring a floating-point number with two decimal places and provide the final value, e.g., 1.23, 1.34, 1.45, at the end. |
+| Free-form       | List        | Please answer the question requiring a Python list as an answer and provide the final list, e.g., [1, 2, 3], [1.2, 1.3, 1.4], at the end. |
+
+**(Step 2) Answer Extraction** ([extract_answer.py](https://github.com/lupantech/MathVista/blob/main/evaluation/extract_answer.py)): Next, the short answer text is extracted from the detailed response. We propose an answer extractor based on LLMs such as GPT-4. A preliminary study of 200 examples shows that GPT-4 can extract the answer text with more than 99.5% accuracy. Below are examples of extracting short answers from long responses:
+
+```
+# Example 1
+Hint: Please answer the question requiring an integer answer and provide the final value,
+e.g., 1, 2, 3, at the end.
+Question: Which number is missing?
+
+Model response: The number missing in the sequence is 14.
+
+Extracted answer: 14
+
+# Example 2
+Hint: Please answer the question and provide the correct option letter, e.g., A, B, C,
+D, at the end.
+Question: What fraction of the shape is blue?
+Choices: 
+(A) 3/11 
+(B) 8/11 
+(C) 6/11 
+(D) 3/5
+
+Model response: The correct answer is (B) 8/11.
+
+Extracted answer: B
+```
+
+**(Step 3) Score Calculation** ([calculate_score.py](https://github.com/lupantech/MathVista/blob/main/evaluation/extract_answer.py)): Finally, the extracted answer is normalized to a required answer format (e.g., an option letter or an integer), and the target metric scores are computed.
+
+### Evaluating Multimodal Bard
 
 If you have setted Multimodal Bard, you can run the following commands:
 
@@ -279,7 +346,7 @@ python calculate_score.py \
 --score_file scores_bard.json
 ```
 
-### Chain-of-Thought GPT-4
+### Evaluating Chain-of-Thought GPT-4
 
 Generate the response:
 
@@ -315,7 +382,7 @@ python calculate_score.py \
 --score_file scores_gpt4_2shot_solution_use_caption_ocr.json
 ```
 
-### Program-of-Thought GPT-4
+### Evaluating Program-of-Thought GPT-4
 
 Generate the response:
 
@@ -352,9 +419,42 @@ python calculate_score.py \
 --score_file scores_gpt4_2shot_code_use_caption_ocr.json
 ```
 
-### More Models
+### Evaluating More Models
 
 To run more models, please check out the running scripts at [`scripts`](https://github.com/lupantech/MathVista/tree/main/scripts).
+
+## Evaluation Results
+
+<details>
+<summary>Click to expand/collapse the examples.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/5.png" style="zoom:40%;" />
+</details>
+
+<details>
+<summary>Click to expand/collapse the examples.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/6.png" style="zoom:40%;" />
+</details>
+
+<details>
+<summary>Click to expand/collapse the example.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/48.png" style="zoom:40%;" />
+</details>
+
+<details>
+<summary>Click to expand/collapse the example.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/50.png" style="zoom:40%;" />
+</details>
+
+<details>
+<summary>Click to expand/collapse the example.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/52.png" style="zoom:40%;" />
+</details>
+
+<details>
+<summary>Click to expand/collapse the example.</summary>
+<img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/results_examples/53.png" style="zoom:40%;" />
+</details>
+To explore more result examples from different models, please check out the result [exploration page](https://mathvista.github.io/#explorer).
 
 ## License
 
@@ -388,3 +488,9 @@ If you find **MathVista** useful for your your research and applications, please
 }
 ```
 
+## Related Work
+
+- **[Chameleon]** [Chameleon: Plug-and-Play Compositional Reasoning with Large Language Models](https://chameleon-llm.github.io/)
+- **[ScienceQA]** [Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering](https://scienceqa.github.io/)
+- **[LLaMA-Adapter]** [LLaMA-Adapter: Efficient Fine-tuning of Language Models with Zero-init Attention](https://github.com/OpenGVLab/LLaMA-Adapter)
+- **[LLaMA-Adapter V2]** [LLaMA-Adapter V2: Parameter-Efficient Visual Instruction Model](https://github.com/OpenGVLab/LLaMA-Adapter)
