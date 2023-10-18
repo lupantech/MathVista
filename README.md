@@ -48,15 +48,12 @@ We conduct **a comprehensive evaluation of 12 prominent open-source and propriet
     <img src="assets/score_leaderboard_gpt4v.png" width="70%"> <br>
   Accuracy scores the testmini set (1,000 examples) of <b>MathVista</b>.
 </p>
-
-
 Given these significant gaps, **MathVista** fuels future research in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. Preliminary tests show that **MathVista** also presents challenges to GPT-4V, underscoring the benchmark's importance.
 
 <p align="center">
-    <img src="assets/tease_scores.png" width="80%"> <br>
-  Accuracy scores of one leading LLM (PoT GPT-4) and five primary LMMs on <b>MathVista</b>.
+    <img src="assets/tease_scores_gpt4v.png" width="80%"> <br>
+  Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human performance on <b>MathVista</b>.
 </p>
-
 
 For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/abs/2310.02255).
 
