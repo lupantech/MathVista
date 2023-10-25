@@ -520,7 +520,7 @@ If you find **MathVista** useful for your your research and applications, please
 
 ```latex
 @article{lu2023mathvista,
-  title={MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
+  title={MathVista: Evaluating Math Reasoning in Visual Contexts with GPT-4V, Bard, and Other Large Multimodal Models},
   author={Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
   journal={arXiv preprint arXiv:2310.02255},
   year={2023}
