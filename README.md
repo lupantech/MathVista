@@ -14,9 +14,9 @@ Code for the Paper "[MathVista: Evaluating Mathematical Reasoning of Foundation 
 
 For more details, please refer to the project page with dataset exploration and visualization tools: [https://mathvista.github.io/](https://mathvista.github.io/).
 
-:bell: If you have any questions or suggestions, please don't hesitate to let us know. You can comment on the [Twitter](https://twitter.com/lupantech/status/1709757360758288448), or post an issue on this repository.
+:bell: If you have any questions or suggestions, please don't hesitate to let us know. You can comment on the [Twitter](https://twitter.com/lupantech/status/1717313355780964608), or post an issue on this repository.
 
-[[Webpage](https://mathvista.github.io/)] [[Paper](https://lupantech.github.io/papers/arxiv23_mathvista.pdf)] [[Huggingface Dataset](https://huggingface.co/datasets/AI4Math/MathVista)] [[Leaderboard](https://mathvista.github.io/#leaderboard)] [[Visualization](https://mathvista.github.io/#visualization)] [[Result Explorer](https://mathvista.github.io/#explorer)] [[Twitter](https://twitter.com/lupantech/status/1709757360758288448)]
+[[Webpage](https://mathvista.github.io/)] [[Paper](https://lupantech.github.io/papers/arxiv23_mathvista.pdf)] [[Huggingface Dataset](https://huggingface.co/datasets/AI4Math/MathVista)] [[Leaderboard](https://mathvista.github.io/#leaderboard)] [[Visualization](https://mathvista.github.io/#visualization)] [[Result Explorer](https://mathvista.github.io/#explorer)] [[Twitter](https://twitter.com/lupantech/status/1717313355780964608)]
 
 <p align="center">
     <img src="assets/logo_v1.png" width="40%"> <br>
