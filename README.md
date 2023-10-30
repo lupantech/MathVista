@@ -1,4 +1,4 @@
-# MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts
+# MathVista: Evaluating Math Reasoning in Visual Contexts
 
 ![MathQA](https://img.shields.io/badge/Task-MathQA-red) 
 ![Mathematical Reasoning](https://img.shields.io/badge/Task-Mathematical_Reasoning-red) 
