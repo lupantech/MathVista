@@ -61,10 +61,15 @@ We further explore the new ability of **self-verification**, the use of **self-c
   Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human performance on <b>MathVista</b>.
 </p>
 
+<details>
+<summary>🔍 See the accuracy scores without Gemini Ultra</summary>
+
 <p align="center">
     <img src="assets/tease_scores_gpt4v.png" width="80%"> <br>
   Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human performance on <b>MathVista</b>.
 </p>
+
+</details>
 
 For more details, you can find our project page [here](https://mathvista.github.io/) and our paper [here](https://arxiv.org/abs/2310.02255).
 
