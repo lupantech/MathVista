@@ -27,6 +27,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 ## 💥 News 💥
 
+- **[2023.12.08]** 🔍 We've updated the leaderboard and radar graphs with the **fine-grained scores** of the **Gemini** family models. Thanks to the Gemini Team and Google for providing us with these results! 👏
 - **[2023.12.06]** 🚀 Google's newly released multimodal model, [Gemini](https://blog.google/technology/ai/google-gemini-ai/), shows impressive abilities on **MathVista**, achieving a new SOTA performance with **50.3%**! 🎉  Cheers!!
 - **[2023.11.17]** 🌟 Congratulations to [SPHINX (V2)](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX), which is now the SOTA open-source multimodal model on **MathVista**, reaching **36.7%**. 👏
 - **[2023.10.25]** 🚀 Dive into our comprehensive **112-page** evaluation of **GPT-4V**, Bard, and other Large Multimodal Models, encompassing both **quantitative** and **qualitative** insights. [Explore the full paper now!](https://arxiv.org/abs/2310.02255) 📄✨
