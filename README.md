@@ -27,7 +27,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 ## 💥 News 💥
 
-- **[2023.12.21] 🚀 **[Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Cheers!
+- **[2023.12.21]** 🚀 [Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Cheers!
 - **[2023.12.08]** 🔍 We've updated the leaderboard and radar graphs with the **fine-grained scores** of the **Gemini** family models. Thanks to the Gemini Team and Google for providing us with these results! 👏
 - **[2023.12.06]** 🚀 Google's newly released multimodal model, [Gemini](https://blog.google/technology/ai/google-gemini-ai/), shows impressive abilities on **MathVista**, achieving a new SOTA performance with **50.3%**! 🎉  Cheers!!
 - **[2023.11.17]** 🌟 Congratulations to [SPHINX (V2)](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX), which is now the SOTA open-source multimodal model on **MathVista**, reaching **36.7%**. 👏
@@ -77,7 +77,7 @@ For more details, you can find our project page [here](https://mathvista.github.
 
 ## 🏆 Leaderboard 🏆
 
-🚨🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this email](mailto:lupantech@gmail.com) with your result json file (the result [template](https://github.com/lupantech/MathVista/blob/main/results/output_testmini_template_for_leaderboard_submission.json) for *testmini* and the [template](https://github.com/lupantech/MathVista/blob/main/results/output_test_template_for_leaderboard_submission.json) for *test*).
+🚨🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this email](mailto:lupantech@gmail.com) with your result json file, referring to the template files available [here](https://github.com/lupantech/MathVista/tree/main/results/leaderboad_submission_template).
 
 Accuracy scores on the **testmini** subset (1,000 examples):
 
@@ -227,6 +227,8 @@ dataset["testmini"][0]['decoded_image'] # display the image
 # print the first example on the test set
 print(dataset["test"][0])
 ```
+
+We have uploaded a demo to illustrate how to access the MathVista dataset on Hugging Face, available at [hugging_face_dataset_demo.ipynb](https://github.com/lupantech/MathVista/blob/main/jupyter_notebook_demos/hugging_face_dataset_demo.ipynb).
 
 ### Data Format
 
