@@ -7,10 +7,10 @@
 ![Claude-4](https://img.shields.io/badge/Model-Claude--2-green) 
 ![ChatGPT](https://img.shields.io/badge/Model-ChatGPT-green) 
 ![GPT-4](https://img.shields.io/badge/Model-GPT--4-green) 
-![Bard](https://img.shields.io/badge/Model-Bard-green)
+![Gemini](https://img.shields.io/badge/Model-Gemini-green)
 ![GPT-4V](https://img.shields.io/badge/Model-GPT--4V-green)
 
-Code for the Paper "[MathVista: Evaluating Math Reasoning in Visual Contexts with GPT-4V, Bard, and Other Large Multimodal Models](https://arxiv.org/abs/2310.02255)".
+Code for the Paper "[MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts](https://arxiv.org/abs/2310.02255)".
 
 For more details, please refer to the project page with dataset exploration and visualization tools: [https://mathvista.github.io/](https://mathvista.github.io/).
 
@@ -27,7 +27,8 @@ For more details, please refer to the project page with dataset exploration and 
 
 ## 💥 News 💥
 
-- **[2023.12.21]** 🚀 [Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Cheers!
+- **[2023.01.16]** 🌟 Our **MathVista** paper has been accepted for an **Oral** presentation at **ICLR 2024** (only top 85 out of over 7200 submissions)! 🎉 Cheers!
+- **[2023.12.21]** 🚀 [Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Congratulations!
 - **[2023.12.08]** 🔍 We've updated the leaderboard and radar graphs with the **fine-grained scores** of the **Gemini** family models. Thanks to the Gemini Team and Google for providing us with these results! 👏
 - **[2023.12.06]** 🚀 Google's newly released multimodal model, [Gemini](https://blog.google/technology/ai/google-gemini-ai/), shows impressive abilities on **MathVista**, achieving a new SOTA performance with **50.3%**! 🎉  Cheers!!
 - **[2023.11.17]** 🌟 Congratulations to [SPHINX (V2)](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX), which is now the SOTA open-source multimodal model on **MathVista**, reaching **36.7%**. 👏
@@ -88,33 +89,36 @@ Accuracy scores on the **testmini** subset (1,000 examples):
 | 2     | **GPT-4V (Playground) 🥈**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-15 | **49.9** | 43.1    | 50.5    | 57.5    | 65.2    | 38.0    | 53.0    | 49.0    | 51.0    | 21.6    | 20.1    | 63.1    | 55.8    |
 | 3     | **Gemini Pro 🥉**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **45.2** | 47.6    | 40.4    | 39.2    | 61.4    | 39.1    | 45.2    | 38.8    | 41.0    | 10.8    | 32.6    | 54.9    | 56.8    |
 | 4     | **Qwen-VL-Plus**              | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-21 | **43.3** | 54.6    | 38.5    | 31.2    | 55.1    | 34.1    | 39.1    | 32.0    | 39.3    | 18.9    | 26.4    | 59.0    | 56.1    |
-| 5     | **SPHINX (V2)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-17 | **36.7** | 54.6    | 16.4    | 23.1    | 41.8    | 43.0    | 20.6    | 33.4    | 17.6    | 24.3    | 21.5    | 43.4    | 51.5    |
-| 6     | **Multimodal Bard**           | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
-| 7     | **PoT GPT-4 (Caption+OCR)**   | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
-| 8     | **CoT Claude (Caption+OCR)**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
-| 9     | **CoT GPT4 (Caption+OCR)**    | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
-| 10    | **CoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
-| 11    | **Gemini Nano 2**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **30.6** | 28.6    | 23.6    | 30.6    | 41.8    | 31.8    | 27.1    | 29.8    | 26.8    | 10.8    | 20.8    | 40.2    | 33.5    |
-| 12    | **SPHINX (V1)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-09 | **27.5** | 23.4    | 23.1    | 21.5    | 39.9    | 34.1    | 25.6    | 28.1    | 23.4    | 16.2    | 17.4    | 40.2    | 23.6    |
-| 13    | **Gemini Nano 1**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **27.3** | 30.9    | 21.6    | 23.7    | 29.1    | 30.7    | 23.8    | 25.5    | 21.3    | 13.5    | 20.8    | 27.9    | 30.9    |
-| 14    | **PoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
-| 15    | **LLaVA (LLaMA-2-13B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
-| 16    | **InstructBLIP (Vicuna-7B)**  | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
-| 17    | **LLaVAR**                    | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
-| 18    | **LLaMA-Adapter-V2 (7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
-| 19    | **miniGPT4 (LLaMA-2-7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
-| 20    | **mPLUG-Owl (LLaMA-7B)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
-| 21    | **IDEFICS (9B-Instruct)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
-| 22    | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.9** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
+| 5     | **SPHINX-MoE**                | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **42.3** | 49.8    | 31.2    | 42.5    | 46.8    | 39.7    | 31.7    | 41.6    | 30.5    | 16.2    | 27.1    | 50.8    | 50.8    |
+| 6     | **SPHINX (V2)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-17 | **36.7** | 54.6    | 16.4    | 23.1    | 41.8    | 43.0    | 20.6    | 33.4    | 17.6    | 24.3    | 21.5    | 43.4    | 51.5    |
+| 7     | **Multimodal Bard**           | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
+| 8     | **PoT GPT-4 (Caption+OCR)**   | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
+| 9     | **CoT Claude (Caption+OCR)**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
+| 10    | **CoT GPT4 (Caption+OCR)**    | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
+| 11    | **CoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
+| 12    | **Gemini Nano 2**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **30.6** | 28.6    | 23.6    | 30.6    | 41.8    | 31.8    | 27.1    | 29.8    | 26.8    | 10.8    | 20.8    | 40.2    | 33.5    |
+| 13    | **SPHINX (V1)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-09 | **27.5** | 23.4    | 23.1    | 21.5    | 39.9    | 34.1    | 25.6    | 28.1    | 23.4    | 16.2    | 17.4    | 40.2    | 23.6    |
+| 14    | **Gemini Nano 1**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **27.3** | 30.9    | 21.6    | 23.7    | 29.1    | 30.7    | 23.8    | 25.5    | 21.3    | 13.5    | 20.8    | 27.9    | 30.9    |
+| 15    | **PoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
+| 16    | **LLaVA (LLaMA-2-13B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
+| 17    | **InstructBLIP (Vicuna-7B)**  | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
+| 18    | **LLaVAR**                    | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
+| 19    | **LLaMA-Adapter-V2 (7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
+| 20    | **miniGPT4 (LLaMA-2-7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
+| 21    | **mPLUG-Owl (LLaMA-7B)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
+| 22    | **IDEFICS (9B-Instruct)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
+| 23    | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.9** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
 
 Accuracy scores on the **test** subset (5,141 examples):
 
-| **#** | **Model**                     | **Method** | **Source**                               | **Date**   | **ALL**   | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
-| ----- | ----------------------------- | ---------- | ---------------------------------------- | ---------- | --------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| 1     | **PoT GPT-4 (Caption+OCR) 🥇** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **31.74** | 27.6    | 37.4    | 23.9    | 43.0    | 30.3    | 37.1    | 27.9    | 37.5    | 22.7    | 15.8    | 44.5    | 31.9    |
-| 2     | **CoT GPT4 (Caption+OCR) 🥈**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **30.50** | 27.2    | 35.9    | 21.3    | 43.1    | 28.2    | 35.7    | 25.2    | 35.8    | 24.7    | 15.4    | 47.3    | 31.3    |
-| 3     | **LLaVA (LLaMA-2-13B) 🥉**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **25.40** | 22.9    | 24.6    | 18.1    | 35.8    | 29.7    | 26.9    | 22.5    | 24.4    | 19.1    | 19.1    | 34.7    | 21.6    |
-| 4     | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255) | 2023-10-03 | **17.86** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
+| **#** | **Model**                     | **Method** | **Source**                                                   | **Date**   | **ALL**   | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
+| ----- | ----------------------------- | ---------- | ------------------------------------------------------------ | ---------- | --------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| 1     | **Qwen-VL-Plus 🥇**            | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-26 | **44.33** | 55.9    | 34.7    | 29.7    | 58.8    | 42.4    | 40.7    | 35.4    | 36.6    | 21.6    | 30.4    | 55.9    | 56.3    |
+| 2     | **SPHINX-MoE 🥈**              | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-13 | **42.68** | 50.3    | 29.7    | 40.9    | 49.3    | 43.3    | 33.9    | 43.0    | 29.1    | 14.4    | 26.3    | 46.9    | 51.2    |
+| 3     | **PoT GPT-4 (Caption+OCR) 🥉** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **31.74** | 27.6    | 37.4    | 23.9    | 43.0    | 30.3    | 37.1    | 27.9    | 37.5    | 22.7    | 15.8    | 44.5    | 31.9    |
+| 4     | **CoT GPT4 (Caption+OCR)**    | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **30.50** | 27.2    | 35.9    | 21.3    | 43.1    | 28.2    | 35.7    | 25.2    | 35.8    | 24.7    | 15.4    | 47.3    | 31.3    |
+| 5     | **LLaVA (LLaMA-2-13B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.40** | 22.9    | 24.6    | 18.1    | 35.8    | 29.7    | 26.9    | 22.5    | 24.4    | 19.1    | 19.1    | 34.7    | 21.6    |
+| *     | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.86** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
 
 Some notations in the table:
 
@@ -127,9 +131,10 @@ Some notations in the table:
 - **GPT-4**: the `gpt-4-0613` engine
 
 - **Method types**
+  -  **MoE 🤖:** Mixture of Experts
   -  **LMM 🖼️:** Large Multimodal Model
   -  **Tool 🛠️:** Tool-augmented Large Language Model
-
+  
 - **Task types:** 
   - **FQA:** figure question answering
   - **GPS:** geometry problem solving
@@ -556,11 +561,11 @@ Fantastic! I'm always open to engaging discussions, collaborations, or even just
 If you find **MathVista** useful for your your research and applications, please kindly cite using this BibTeX:
 
 ```latex
-@article{lu2023mathvista,
-  title={MathVista: Evaluating Math Reasoning in Visual Contexts with GPT-4V, Bard, and Other Large Multimodal Models},
+@inproceedings{lu2024mathvista,
+  title={MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
   author={Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
-  journal={arXiv preprint arXiv:2310.02255},
-  year={2023}
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2024}
 }
 ```
 
