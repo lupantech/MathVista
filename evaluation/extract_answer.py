@@ -9,7 +9,8 @@ from tqdm import tqdm
 sys.path.append('../')
 from models import gpt
 from prompts.ext_ans import demo_prompt
-from utilities import get_chat_response, read_json, save_json
+from utilities import read_json, save_json
+
 
 def verify_extraction(extraction):
     extraction = extraction.strip()
@@ -85,7 +86,7 @@ def parse_args():
     parser.add_argument('--quick_extract', action='store_true', help='use rules to extract answer for some problems')
     parser.add_argument('--rerun', action='store_true', help='rerun the answer extraction')
     # output
-    parser.add_argument('--save_every', type=int, default=10, help='save every n problems')
+    parser.add_argument('--save_every', type=int, default=100, help='save every n problems')
 
     parser.add_argument('--azure_openai_api_endpoint', type=str, default=os.getenv("AZURE_OPENAI_API_ENDPOINT"))
     parser.add_argument('--azure_openai_api_key', type=str, default=os.getenv("AZURE_OPENAI_API_KEY"))
@@ -111,7 +112,9 @@ def main():
     assert (
         args.azure_openai_api_version is not None
     ), "Env var AZURE_OPENAI_API_VERSION is not set but is required for OpenAI client."
-    assert args.azure_openai_model is not None, "Env var AZURE_OPENAI_MODEL is not set but is required for OpenAI client."
+    assert (
+        args.azure_openai_model is not None
+    ), "Env var AZURE_OPENAI_MODEL is not set but is required for OpenAI client."
 
     client = AzureOpenAI(
         azure_endpoint=args.azure_openai_api_endpoint,
@@ -125,7 +128,7 @@ def main():
 
     full_pids = list(results.keys())
     if args.number > 0:
-        full_pids = full_pids[:min(args.number, len(full_pids))]
+        full_pids = full_pids[: min(args.number, len(full_pids))]
     print("Total Number of testing problems:", len(full_pids))
 
     skip_pids = []
@@ -151,9 +154,12 @@ def main():
         extraction = extract_answer(model, response, problem, args.quick_extract)
         results[pid]['extraction'] = extraction
 
-        if i % args.save_every == 0 or i == len(test_pids) - 1:
+        if i % args.save_every == 0:
             save_json(results, args.results_file_path)
             print(f"Saved results to {args.results_file_path}")
+
+    save_json(results, args.results_file_path)
+    print(f"Saved results to {args.results_file_path}")
 
 
 if __name__ == '__main__':
