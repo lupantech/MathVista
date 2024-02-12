@@ -1,9 +1,7 @@
 import os
 import cv2
 import json
-import time
 import pickle
-import openai
 import re
 from word2number import w2n
 
@@ -24,6 +22,7 @@ def read_csv(file):
 def read_pandas_csv(csv_path):
     # read a pandas csv sheet
     import pandas as pd
+
     df = pd.read_csv(csv_path)
     return df
 
@@ -82,25 +81,67 @@ def contains_number_word(text):
 
 def contains_quantity_word(text, special_keep_words=[]):
     # check if text contains a quantity word
-    quantity_words = ["most", "least", "fewest"
-                      "more", "less", "fewer",
-                      "largest", "smallest", "greatest",
-                      "larger", "smaller", "greater",
-                      "highest", "lowest", "higher", "lower",
-                      "increase", "decrease",
-                      "minimum", "maximum", "max", "min",
-                      "mean", "average", "median",
-                      "total", "sum", "add", "subtract",
-                      "difference", "quotient", "gap",
-                      "half", "double", "twice", "triple",
-                      "square", "cube", "root",
-                      "approximate", "approximation",
-                      "triangle", "rectangle", "circle", "square", "cube", "sphere", "cylinder", "cone", "pyramid",
-                      "multiply", "divide",
-                      "percentage", "percent", "ratio", "proportion", "fraction", "rate",
-                    ]
+    quantity_words = [
+        "most",
+        "least",
+        "fewest" "more",
+        "less",
+        "fewer",
+        "largest",
+        "smallest",
+        "greatest",
+        "larger",
+        "smaller",
+        "greater",
+        "highest",
+        "lowest",
+        "higher",
+        "lower",
+        "increase",
+        "decrease",
+        "minimum",
+        "maximum",
+        "max",
+        "min",
+        "mean",
+        "average",
+        "median",
+        "total",
+        "sum",
+        "add",
+        "subtract",
+        "difference",
+        "quotient",
+        "gap",
+        "half",
+        "double",
+        "twice",
+        "triple",
+        "square",
+        "cube",
+        "root",
+        "approximate",
+        "approximation",
+        "triangle",
+        "rectangle",
+        "circle",
+        "square",
+        "cube",
+        "sphere",
+        "cylinder",
+        "cone",
+        "pyramid",
+        "multiply",
+        "divide",
+        "percentage",
+        "percent",
+        "ratio",
+        "proportion",
+        "fraction",
+        "rate",
+    ]
 
-    quantity_words += special_keep_words # dataset specific words
+    quantity_words += special_keep_words  # dataset specific words
 
     words = re.findall(r'\b\w+\b', text)  # This regex pattern matches any word in the text
     if any(word in quantity_words for word in words):
@@ -110,9 +151,7 @@ def contains_quantity_word(text, special_keep_words=[]):
 
 
 def is_bool_word(text):
-    if text in ["Yes", "No", "True", "False",
-                "yes", "no", "true", "false",
-                "YES", "NO", "TRUE", "FALSE"]:
+    if text in ["Yes", "No", "True", "False", "yes", "no", "true", "false", "YES", "NO", "TRUE", "FALSE"]:
         return True
     return False
 
@@ -141,60 +180,21 @@ def is_float_string(text):
 
 def copy_image(image_path, output_image_path):
     from shutil import copyfile
+
     copyfile(image_path, output_image_path)
 
 
 def copy_dir(src_dir, dst_dir):
     from shutil import copytree
+
     # copy the source directory to the target directory
     copytree(src_dir, dst_dir)
 
 
 import PIL.Image as Image
+
+
 def get_image_size(img_path):
     img = Image.open(img_path)
     width, height = img.size
     return width, height
-
-
-def get_chat_response(promot, api_key, model="gpt-3.5-turbo", temperature=0, max_tokens=256, n=1, patience=10000000,
- sleep_time=0):
-    messages = [
-        {"role": "user", "content": promot},
-    ]
-    # print("I am here")
-    while patience > 0:
-        patience -= 1
-        try:
-            response = openai.ChatCompletion.create(model=model,
-                                                messages=messages,
-                                                api_key=api_key,
-                                                temperature=temperature,
-                                                max_tokens=max_tokens,
-                                                n=n)
-            if n == 1:
-                prediction = response['choices'][0]['message']['content'].strip()
-                if prediction != "" and prediction != None:
-                    return prediction
-            else:
-                prediction = [choice['message']['content'].strip() for choice in response['choices']]
-                if prediction[0] != "" and prediction[0] != None:
-                    return prediction
-
-        except Exception as e:
-            if "Rate limit" not in str(e):
-                print(e)
-
-            if "Please reduce the length of the messages" in str(e):
-                print("!!Reduce promot size")
-                # reduce input prompt and keep the tail
-                new_size = int(len(promot) * 0.9)
-                new_start = len(promot) - new_size
-                promot = promot[new_start:]
-                messages = [
-                    {"role": "user", "content": promot},
-                ]
-
-            if sleep_time > 0:
-                time.sleep(sleep_time)
-    return ""
