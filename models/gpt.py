@@ -1,44 +1,48 @@
 import time
-import openai
+from typing import Union
+
+from openai import AzureOpenAI, OpenAI
+from openai.types.chat import ChatCompletionMessageParam
 
 
 # build gpt class
 class GPT_Model():
-    def __init__(self, model="gpt-3.5-turbo", api_key="", temperature=0, max_tokens=1024, n=1, patience=1000000, sleep_time=0):
+    def __init__(self, client: Union[OpenAI, AzureOpenAI], model="gpt-3.5-turbo", temperature=0, max_tokens=1024, n=1, patience=1000000, sleep_time=0):
+        self.client = client
         self.model = model
-        self.api_key = api_key
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n = n
         self.patience = patience
         self.sleep_time = sleep_time
 
-    def get_response(self, image_path, user_prompt):
+    def get_response(self, user_prompt: str):
         patience = self.patience
         max_tokens = self.max_tokens
-        messages = [
+        messages: list[ChatCompletionMessageParam] = [
             {"role": "user", "content": user_prompt},
         ]
         while patience > 0:
             patience -= 1
             try:
                 # print("self.model", self.model)
-                response = openai.ChatCompletion.create(model=self.model,
-                                                        messages=messages,
-                                                        api_key=self.api_key,
-                                                        temperature=self.temperature,
-                                                        max_tokens=max_tokens,
-                                                        n=self.n
-                                                        )
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                    temperature=self.temperature,
+                    max_tokens=max_tokens,
+                    n=self.n,
+                )
+
                 if self.n == 1:
-                    prediction = response['choices'][0]['message']['content'].strip()
-                    if prediction != "" and prediction != None:
-                        return prediction
+                    prediction = response.choices[0].message.content
+                    if prediction != "" and prediction is not None:
+                        return prediction.strip()
                 else:
-                    prediction = [choice['message']['content'].strip() for choice in response['choices']]
-                    if prediction[0] != "" and prediction[0] != None:
-                        return prediction
-                        
+                    predictions = [choice.message.content for choice in response.choices]
+                    if predictions[0] != "" and predictions[0] is not None:
+                        return predictions[0].strip()
+
             except Exception as e:
                 if "limit" not in str(e):
                     print(e)
@@ -52,4 +56,5 @@ class GPT_Model():
                     return ""
                 if self.sleep_time > 0:
                     time.sleep(self.sleep_time)
+
         return ""
