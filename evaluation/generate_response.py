@@ -61,16 +61,21 @@ def parse_args():
     # output
     parser.add_argument('--output_dir', type=str, default='../results/bard')
     parser.add_argument('--output_file', type=str, default='output_bard.json')
+    parser.add_argument('--save_every', type=int, default=100, help='save every n problems')
     # model
-    parser.add_argument('--model', type=str, default='gpt-3.5-turbo', help='llm engine',
-                        choices = ['gpt-3.5-turbo', 'claude-2', 'gpt4', 'gpt-4-0613', 'bard'])
+    parser.add_argument(
+        '--model',
+        type=str,
+        default='gpt-3.5-turbo',
+        help='llm engine',
+        choices=['gpt-3.5-turbo', 'claude-2', 'gpt4', 'gpt-4-0613', 'bard'],
+    )
     parser.add_argument('--key', type=str, default='', help='key for llm api')
     # query
     parser.add_argument('--query_file', type=str, default=None)
     parser.add_argument('--caption_file', type=str, default='../data/texts/captions_bard.json')
     parser.add_argument('--ocr_file', type=str, default='../data/texts/ocrs_easyocr.json')
-    parser.add_argument('--shot_type', type=str, default='solution', help='shot type',
-                        choices = ['solution', 'code'])
+    parser.add_argument('--shot_type', type=str, default='solution', help='shot type', choices=['solution', 'code'])
     parser.add_argument('--shot_num', type=int, default=0, help='number of shot examples')
     parser.add_argument('--use_caption', action='store_true', help='use caption data')
     parser.add_argument('--use_ocr', action='store_true', help='use ocr data')
@@ -163,7 +168,9 @@ def main():
         assert (
             args.azure_openai_api_version is not None
         ), "Env var AZURE_OPENAI_API_VERSION is not set but is required for OpenAI client."
-        assert args.azure_openai_model is not None, "Env var AZURE_OPENAI_MODEL is not set but is required for OpenAI client."
+        assert (
+            args.azure_openai_model is not None
+        ), "Env var AZURE_OPENAI_MODEL is not set but is required for OpenAI client."
 
         client = AzureOpenAI(
             azure_endpoint=args.azure_openai_api_endpoint,
@@ -199,7 +206,9 @@ def main():
                     skip_pids.append(problem_id)
 
     if len(skip_pids) > 0:
-        print(f"Found existing results file with {len(skip_pids)} problems with valid responses. Skipping these problems...")
+        print(
+            f"Found existing results file with {len(skip_pids)} problems with valid responses. Skipping these problems..."
+        )
     else:
         print("Rerun answer extraction for all problems...")
 
@@ -237,15 +246,18 @@ def main():
             print(f"Error in extracting answer for {problem_id}")
             results[problem_id]['error'] = e
 
-        try:
-            if args.debug:
+        if problem_index % args.save_every == 0:
+            try:
                 print(f"Saving results to {output_file}...")
-            save_json(results, output_file)
-            if args.debug:
+                save_json(results, output_file)
                 print(f"Results saved.")
-        except Exception as e:
-            print(e)
-            print(f"Error in saving {output_file}")
+            except Exception as e:
+                print(e)
+                print(f"Error in saving {output_file}")
+
+    print(f"Saving results to {output_file}...")
+    save_json(results, output_file)
+    print(f"Results saved.")
 
 
 if __name__ == '__main__':
