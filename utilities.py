@@ -11,7 +11,7 @@ from word2number import w2n
 def create_dir(output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    
+
 
 def read_csv(file):
     data = []
@@ -22,7 +22,7 @@ def read_csv(file):
 
 
 def read_pandas_csv(csv_path):
-    # read a pandas csv sheet 
+    # read a pandas csv sheet
     import pandas as pd
     df = pd.read_csv(csv_path)
     return df
@@ -57,8 +57,9 @@ def contains_digit(text):
     # check if text contains a digit
     if any(char.isdigit() for char in text):
         return True
-    return False  
-    
+    return False
+
+
 def contains_number_word(text):
     # check if text contains a number word
     ignore_words = ["a", "an", "point"]
@@ -71,7 +72,7 @@ def contains_number_word(text):
             return True  # If the word can be converted to a number, return True
         except ValueError:
             continue  # If the word can't be converted to a number, continue with the next word
-    
+
     # check if text contains a digit
     if any(char.isdigit() for char in text):
         return True
@@ -82,9 +83,9 @@ def contains_number_word(text):
 def contains_quantity_word(text, special_keep_words=[]):
     # check if text contains a quantity word
     quantity_words = ["most", "least", "fewest"
-                      "more", "less", "fewer", 
-                      "largest", "smallest", "greatest", 
-                      "larger", "smaller", "greater", 
+                      "more", "less", "fewer",
+                      "largest", "smallest", "greatest",
+                      "larger", "smaller", "greater",
                       "highest", "lowest", "higher", "lower",
                       "increase", "decrease",
                       "minimum", "maximum", "max", "min",
@@ -96,11 +97,11 @@ def contains_quantity_word(text, special_keep_words=[]):
                       "approximate", "approximation",
                       "triangle", "rectangle", "circle", "square", "cube", "sphere", "cylinder", "cone", "pyramid",
                       "multiply", "divide",
-                      "percentage", "percent", "ratio", "proportion", "fraction", "rate", 
+                      "percentage", "percent", "ratio", "proportion", "fraction", "rate",
                     ]
-    
+
     quantity_words += special_keep_words # dataset specific words
-    
+
     words = re.findall(r'\b\w+\b', text)  # This regex pattern matches any word in the text
     if any(word in quantity_words for word in words):
         return True
@@ -109,8 +110,8 @@ def contains_quantity_word(text, special_keep_words=[]):
 
 
 def is_bool_word(text):
-    if text in ["Yes", "No", "True", "False", 
-                "yes", "no", "true", "false", 
+    if text in ["Yes", "No", "True", "False",
+                "yes", "no", "true", "false",
                 "YES", "NO", "TRUE", "FALSE"]:
         return True
     return False
@@ -125,8 +126,8 @@ def is_digit_string(text):
         return True
     except ValueError:
         return False
-   
-    
+
+
 def is_float_string(text):
     # text is a float string if it contains a "." and can be converted to a float
     if "." in text:
@@ -193,7 +194,7 @@ def get_chat_response(promot, api_key, model="gpt-3.5-turbo", temperature=0, max
                 messages = [
                     {"role": "user", "content": promot},
                 ]
-                
+
             if sleep_time > 0:
                 time.sleep(sleep_time)
     return ""
