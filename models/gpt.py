@@ -34,18 +34,15 @@ class GPT_Model():
                     n=self.n,
                 )
 
-                if self.n == 1:
-                    prediction = response.choices[0].message.content
-                    if prediction != "" and prediction is not None:
-                        return prediction.strip()
-                else:
-                    predictions = [choice.message.content for choice in response.choices]
-                    if predictions[0] != "" and predictions[0] is not None:
-                        return predictions[0].strip()
+                predictions = [choice.message.content for choice in response.choices]
+                prediction = predictions[0]
+
+                if prediction != "" and prediction is not None:
+                    return prediction.strip()
 
             except Exception as e:
-                if "limit" not in str(e):
-                    print(e)
+                print(e)
+
                 if "Please reduce the length of the messages or completion" in str(e):
                     max_tokens = int(max_tokens * 0.9)
                     print("!!Reduce max_tokens to", max_tokens)
@@ -55,6 +52,7 @@ class GPT_Model():
                     print("!!Reduce user_prompt to", user_prompt[:-1])
                     return ""
                 if self.sleep_time > 0:
+                    print(f"Sleeping for {self.sleep_time} seconds")
                     time.sleep(self.sleep_time)
 
         return ""
