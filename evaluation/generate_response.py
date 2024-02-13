@@ -59,12 +59,14 @@ def evaluate_code(code_string):
 def parse_args():
     parser = argparse.ArgumentParser()
     # input
+    parser.add_argument('--dataset_name', type=str, default='AI4Math/MathVista')
     parser.add_argument('--test_split_name', type=str, default='testmini')
     parser.add_argument('--data_dir', type=str, default='../data')
     parser.add_argument('--input_file', type=str, default='testmini.json')
     # output
     parser.add_argument('--output_dir', type=str, default='../results/bard')
     parser.add_argument('--output_file', type=str, default='output_bard.json')
+    parser.add_argument('--max_num_problems', type=int, default=-1, help='The number of problems to run')
     parser.add_argument('--save_every', type=int, default=100, help='save every n problems')
     # Local Model
     parser.add_argument('--model_path', type=str, default="liuhaotian/llava-v1.5-7b")
@@ -107,10 +109,10 @@ def main():
     args = parse_args()
 
     # load data
-    data_hf = load_dataset('AI4Math/MathVista', split=args.test_split_name)
-    input_file = os.path.join(args.data_dir, args.input_file)
-    logging.info(f"Reading {input_file}...")
-    data = read_json(input_file)
+    logging.info(f"Loading dataset {args.dataset_name}, split {args.test_split_name}...")
+    data_list = load_dataset(args.dataset_name, split=args.test_split_name)
+    # Convert Hugging Face data into local data format
+    data = {item['pid']: item for item in data_list}
 
     # load or create query data
     if args.query_file:
@@ -120,7 +122,7 @@ def main():
             query_data = read_json(query_file)
     else:
         logging.info("Creating new query...")
-        # load caption
+
         caption_data = {}
         if args.use_caption:
             caption_file = args.caption_file
@@ -131,7 +133,7 @@ def main():
                     logging.info("Caption data loaded.")
                 except Exception as e:
                     logging.info("Caption data not found!! Please Check.")
-        # load ocr
+
         ocr_data = {}
         if args.use_ocr:
             ocr_file = args.ocr_file
@@ -142,10 +144,9 @@ def main():
                     logging.info("OCR data loaded.")
                 except Exception as e:
                     logging.info("OCR data not found!! Please Check.")
-        # create query
+
         query_data = create_query_data(data, caption_data, ocr_data, args)
 
-    # output file
     os.makedirs(args.output_dir, exist_ok=True)
     output_file_path = os.path.join(args.output_dir, args.output_file)
 
@@ -217,13 +218,14 @@ def main():
     logging.info(f"Model loaded.")
 
     # build final test pid list
-    test_pids = list(data.keys())
-    logging.info(f"Number of test problems in total: {len(test_pids)}")
+    full_pids = list(data.keys())
+    if args.max_num_problems > 0:
+        full_pids = full_pids[: min(args.max_num_problems, len(full_pids))]
+        logging.warn(f'Limiting number of problems to {args.max_num_problems}.')
 
     skip_pids = []
     if not args.rerun:
-        logging.info("Removing problems with existing valid response...")
-        for problem_id in test_pids:
+        for problem_id in full_pids:
             # logging.info(f"Checking {pid}...")
             if problem_id in results and 'response' in results[problem_id]:
                 response = results[problem_id]['response']
@@ -235,14 +237,12 @@ def main():
         logging.info(
             f"Found existing results file with {len(skip_pids)} problems with valid responses. Skipping these problems..."
         )
-    else:
-        logging.info("Rerun answer extraction for all problems...")
 
-    test_pids = [pid for pid in test_pids if pid not in skip_pids]
+    test_pids = [pid for pid in full_pids if pid not in skip_pids]
     logging.info(f"Number of test problems to run: {len(test_pids)}")
 
-    for problem_index, data_item in enumerate(tqdm(data_hf)):
-        problem = data_item.copy()
+    for i, (problem_id, item) in enumerate(tqdm(data.items())):
+        problem = item.copy()
 
         # Remove decoded Image for JSON deserialization
         problem_decoded_image = problem['decoded_image']
@@ -257,7 +257,7 @@ def main():
         image_full_path = os.path.join(args.data_dir, image_relative_file_path)
 
         logging.debug("--------------------------------------------------------------")
-        logging.debug(f"Generating response for index: {problem_index} id: {problem_id}...")
+        logging.debug(f"Generating response for index: {i} id: {problem_id}...")
         try:
             response = model.get_response(
                 user_prompt=query, image_path=image_full_path, decoded_image=problem_decoded_image, problem=problem
@@ -280,16 +280,13 @@ def main():
             results[problem_id] = problem
             results[problem_id]['error'] = str(e)
 
-        if problem_index % args.save_every == 0:
+        if (i % args.save_every == 0 and i > 0) or i == len(test_pids) - 1:
             try:
                 save_json(results, output_file_path)
                 logging.info(f"Saved results to {output_file_path}")
             except Exception as e:
                 logging.info(f"Error in saving {output_file_path}")
                 logging.info(e)
-
-    save_json(results, output_file_path)
-    logging.info(f"Saved results to {output_file_path}")
 
 
 if __name__ == '__main__':
@@ -307,7 +304,18 @@ if __name__ == '__main__':
             )
         ],
     )
-    logger_blocklist = ["azure", "msal", "azureml", "urllib3", "msrest", "asyncio", "datasets", "PIL", "filelock", "fsspec"]
+    logger_blocklist = [
+        "asyncio",
+        "azure",
+        "azureml",
+        "datasets",
+        "filelock",
+        "fsspec",
+        "msal",
+        "msrest",
+        "PIL",
+        "urllib3",
+    ]
     for module in logger_blocklist:
         logging.getLogger(module).setLevel(logging.WARNING)
 

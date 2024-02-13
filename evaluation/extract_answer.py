@@ -1,15 +1,18 @@
 import argparse
+import logging
 import os
 import re
 import sys
 
 from openai import AzureOpenAI
+from rich.logging import RichHandler
 from tqdm import tqdm
 
 sys.path.append('../')
-from models import gpt
 from prompts.ext_ans import demo_prompt
 from utilities import read_json, save_json
+
+from models import gpt
 
 
 def verify_extraction(extraction):
@@ -55,7 +58,7 @@ def extract_answer(model, response, problem, quick_extract=False):
 
     # quick extraction
     if quick_extract:
-        print("Quickly extracting answer...")
+        logging.info("Quickly extracting answer...")
         # The answer is "text". -> "text"
         try:
             result = re.search(r'The answer is "(.*)"\.', response)
@@ -68,11 +71,12 @@ def extract_answer(model, response, problem, quick_extract=False):
     # general extraction
     try:
         full_prompt = create_test_prompt(demo_prompt, query, response)
-        response = model.get_response(user_prompt=full_prompt)
-        return response
+        logging.debug(f'Prompt length: {len(full_prompt)}')
+        extraction = model.get_response(user_prompt=full_prompt)
+        return extraction
     except Exception as e:
-        print(e)
-        print(f"Error in extracting answer for {pid}")
+        logging.info(f"Error in extracting answer for problem: {pid} with response: {response}")
+        logging.info(e)
 
     return ""
 
@@ -82,7 +86,7 @@ def parse_args():
     # input
     parser.add_argument('--results_file_path', type=str, default='answer.json')
     parser.add_argument('--response_label', type=str, default='response', help='response label for the input file')
-    parser.add_argument('--number', type=int, default=-1, help='number of problems to run')
+    parser.add_argument('--max_num_problems', type=int, default=-1, help='The max number of problems to run')
     parser.add_argument('--quick_extract', action='store_true', help='use rules to extract answer for some problems')
     parser.add_argument('--rerun', action='store_true', help='rerun the answer extraction')
     # output
@@ -123,13 +127,13 @@ def main():
     )
     model = gpt.GPT_Model(client=client, model=args.azure_openai_model)
 
-    print(f"Reading {args.results_file_path}...")
+    logging.info(f"Reading {args.results_file_path}...")
     results = read_json(args.results_file_path)
 
     full_pids = list(results.keys())
-    if args.number > 0:
-        full_pids = full_pids[: min(args.number, len(full_pids))]
-    print("Total Number of testing problems:", len(full_pids))
+    if args.max_num_problems > 0:
+        full_pids = full_pids[: min(args.max_num_problems, len(full_pids))]
+        logging.info(f'Limiting number of problems to {args.max_num_problems}.')
 
     skip_pids = []
     for pid, problem in results.items():
@@ -141,10 +145,10 @@ def main():
         test_pids = full_pids
     else:
         if len(skip_pids) > 0:
-            print("Removing problems with existing valid response...")
+            logging.info("Removing problems with existing valid response...")
         test_pids = [pid for pid in full_pids if pid not in skip_pids]
 
-    print("Number of test problems to run:", len(test_pids))
+    logging.info("Number of test problems to run:", len(test_pids))
 
     for i, pid in enumerate(tqdm(test_pids)):
         problem = results[pid]
@@ -154,13 +158,39 @@ def main():
         extraction = extract_answer(model, response, problem, args.quick_extract)
         results[pid]['extraction'] = extraction
 
-        if i % args.save_every == 0:
+        if (i % args.save_every == 0 and i > 0) or i == len(test_pids) - 1:
             save_json(results, args.results_file_path)
-            print(f"Saved results to {args.results_file_path}")
-
-    save_json(results, args.results_file_path)
-    print(f"Saved results to {args.results_file_path}")
+            logging.info(f"Saved results to {args.results_file_path}")
 
 
 if __name__ == '__main__':
+    logging.basicConfig(
+        level=os.environ.get("LOGLEVEL", "INFO").upper(),
+        # format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s",
+        format="%(message)s",
+        datefmt="[%X]",
+        handlers=[
+            RichHandler(
+                rich_tracebacks=True,
+                markup=False,
+                show_path=False,
+                omit_repeated_times=False,
+            )
+        ],
+    )
+    logger_blocklist = [
+        "asyncio",
+        "azure",
+        "azureml",
+        "datasets",
+        "filelock",
+        "fsspec",
+        "msal",
+        "msrest",
+        "PIL",
+        # "urllib3",
+    ]
+    for module in logger_blocklist:
+        logging.getLogger(module).setLevel(logging.WARNING)
+
     main()
