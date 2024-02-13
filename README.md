@@ -126,7 +126,7 @@ Some notations in the table:
 
 - **Gemini**: the fine-grained scores are from **the Gemini Team, Google**.
 
-- **GPT-4V (Playgroud)**: the launched playground at https://chat.openai.com/?model=gpt-4; experimental dates range from Oct 7, 2023, to Oct 15, 2023
+- **GPT-4V (Playground)**: the launched playground at https://chat.openai.com/?model=gpt-4; experimental dates range from Oct 7, 2023, to Oct 15, 2023
 
 - **GPT-4**: the `gpt-4-0613` engine
 
@@ -271,7 +271,7 @@ The dataset is provided in json format and contains the following attributes:
 🎰 You can explore the dataset in an interactive way [here](https://mathvista.github.io/#visualization).
 
 <details>
-<summary>Click to expand/collapse the visualization page screeshot.</summary>
+<summary>Click to expand/collapse the visualization page screenshot.</summary>
 <img src="https://raw.githubusercontent.com/lupantech/MathVista/main/assets/data_visualizer.png" style="zoom:40%;" />
 </details>
 
