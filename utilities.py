@@ -45,7 +45,8 @@ def read_pickle(path):
 
 def save_json(data, path):
     with open(path, 'w') as f:
-        json.dump(data, f, indent=4)
+        data_json = json.dumps(data, indent=4)
+        f.write(data_json)
 
 
 def save_array_img(path, image):
