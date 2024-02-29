@@ -37,6 +37,7 @@ def extract_answer(response, problem, quick_extract=False):
     answer_type = problem['answer_type']
     choices = problem['choices']
     query = problem['query']
+    pid = problem['pid']
 
     if response == "":
         return ""
