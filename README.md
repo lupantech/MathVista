@@ -80,7 +80,9 @@ For more details, you can find our project page [here](https://mathvista.github.
 
 ### Contributing the Leaderboard
 
-🚨🚨 The leaderboard is continuously being updated. The evaluation instructions are available [here](https://github.com/lupantech/MathVista?tab=readme-ov-file#-evaluations-on-mathvista). 
+🚨🚨 The leaderboard is continuously being updated. 
+
+The evaluation instructions are available at [🔮 Evaluations on MathVista](https://github.com/lupantech/MathVista?tab=readme-ov-file#-evaluations-on-mathvista) and [📝 Evaluation Scripts of Our Models](https://github.com/lupantech/MathVista?tab=readme-ov-file#-evaluation-scripts-of-our-models).
 
 To submit your results to the leaderboard on the **testmini** subset, please send to [this email](mailto:lupantech@gmail.com) with your result json file and score json file, referring to the template files below:
 
