@@ -2,17 +2,14 @@ import argparse
 import logging
 import os
 import re
-import sys
 
 from openai import AzureOpenAI
 from rich.logging import RichHandler
 from tqdm import tqdm
 
-sys.path.append('../')
-from prompts.ext_ans import demo_prompt
-from utilities import read_json, save_json
-
+from evaluation.prompts.ext_ans import demo_prompt
 from models import gpt
+from utilities import read_json, save_json
 
 
 def verify_extraction(extraction):
@@ -71,7 +68,6 @@ def extract_answer(model, response, problem, quick_extract=False):
     # general extraction
     try:
         full_prompt = create_test_prompt(demo_prompt, query, response)
-        logging.debug(f'Prompt length: {len(full_prompt)}')
         extraction = model.get_response(user_prompt=full_prompt)
         return extraction
     except Exception as e:
@@ -102,6 +98,7 @@ def parse_args():
 
 
 def main():
+    logging.info("MathVista: Extract Answers - Start")
     args = parse_args()
 
     # args
@@ -131,9 +128,6 @@ def main():
     results = read_json(args.results_file_path)
 
     full_pids = list(results.keys())
-    if args.max_num_problems > 0:
-        full_pids = full_pids[: min(args.max_num_problems, len(full_pids))]
-        logging.info(f'Limiting number of problems to {args.max_num_problems}.')
 
     skip_pids = []
     for pid, problem in results.items():
@@ -145,10 +139,16 @@ def main():
         test_pids = full_pids
     else:
         if len(skip_pids) > 0:
-            logging.info("Removing problems with existing valid response...")
+            logging.info(
+                f"Found existing results file with {len(skip_pids)} problems with valid responses. Skipping these problems..."
+            )
         test_pids = [pid for pid in full_pids if pid not in skip_pids]
 
-    logging.info("Number of test problems to run:", len(test_pids))
+    if args.max_num_problems > 0:
+        test_pids = test_pids[: min(args.max_num_problems, len(test_pids))]
+        logging.info(f'Limiting number of problems to {args.max_num_problems}.')
+
+    logging.info(f"Number of test problems to run: {len(test_pids)}")
 
     for i, pid in enumerate(tqdm(test_pids)):
         problem = results[pid]
@@ -162,12 +162,13 @@ def main():
             save_json(results, args.results_file_path)
             logging.info(f"Saved results to {args.results_file_path}")
 
+    logging.info("MathVista: Extract Answers - Finish")
+
 
 if __name__ == '__main__':
     logging.basicConfig(
         level=os.environ.get("LOGLEVEL", "INFO").upper(),
-        # format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s",
-        format="%(message)s",
+        format="[%(name)s] %(message)s",
         datefmt="[%X]",
         handlers=[
             RichHandler(
@@ -183,12 +184,15 @@ if __name__ == '__main__':
         "azure",
         "azureml",
         "datasets",
+        "httpx",
+        "httpcore",
         "filelock",
         "fsspec",
         "msal",
         "msrest",
+        "openai",
         "PIL",
-        # "urllib3",
+        "urllib3",
     ]
     for module in logger_blocklist:
         logging.getLogger(module).setLevel(logging.WARNING)
