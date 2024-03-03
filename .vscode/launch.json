@@ -51,10 +51,8 @@
                 "_results/eval/mathvista/gpt4/debug",
                 "--output_file",
                 "gpt4.json",
-                // "output_gpt4_2shot_solution_use_caption_ocr.json",
                 "--score_file",
                 "gpt4_metric.json",
-                // "scores_gpt4_2shot_solution_use_caption_ocr.json",
             ],
             "envFile": "${workspaceFolder}/.env",
             "env": {
