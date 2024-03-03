@@ -4,6 +4,7 @@ import pickle
 import re
 
 import cv2
+import PIL.Image as Image
 from word2number import w2n
 
 
@@ -191,9 +192,6 @@ def copy_dir(src_dir, dst_dir):
 
     # copy the source directory to the target directory
     copytree(src_dir, dst_dir)
-
-
-import PIL.Image as Image
 
 
 def get_image_size(img_path):
