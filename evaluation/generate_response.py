@@ -252,7 +252,7 @@ def main():
         query = query_data[problem_id]
 
         logging.debug("--------------------------------------------------------------")
-        logging.debug(f"Generating response for index: {i} id: {problem_id}...")
+        logging.debug(f"Generating response for problem: {problem_id}...")
         try:
             response = model.get_response(user_prompt=query, decoded_image=problem_decoded_image)
             results[problem_id] = problem
