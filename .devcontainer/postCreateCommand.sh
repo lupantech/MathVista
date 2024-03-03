@@ -22,5 +22,6 @@ CUDA_VERSION=11.8
 conda install -y -c nvidia cuda=$CUDA_VERSION cuda-nvcc=$CUDA_VERSION
 
 pip install --upgrade pip
+pip install -r requirements.txt
 
 echo "postCreateCommand.sh completed!"

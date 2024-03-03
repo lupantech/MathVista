@@ -1,22 +1,24 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-	"features": {
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
-		"ghcr.io/devcontainers/features/common-utils:2": {},
-		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {}
-	},
-	"postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
+    "name": "Python 3",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {}
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {}
+    },
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
     "customizations": {
         "vscode": {
             "settings": {
                 "python.analysis.autoImportCompletions": true,
                 "python.analysis.autoImportUserSymbols": true,
-                "python.defaultInterpreterPath": "~/miniconda3/envs/llava/bin/python",
-                "python.formatting.provider": "black",
+                "python.defaultInterpreterPath": "~/miniconda3/envs/mathvista/bin/python",
                 "python.linting.enabled": true,
                 "python.linting.flake8Enabled": true,
                 "isort.check": true,
@@ -27,7 +29,9 @@
                         "path": "/usr/bin/zsh"
                     },
                 },
-                "[python]": {}
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter"
+                },
             },
             "extensions": [
                 "aaron-bond.better-comments",
@@ -54,7 +58,7 @@
                 "yzhang.markdown-all-in-one"
             ]
         }
-	},
+    },
     "runArgs": [
         "--gpus",
         "all",
