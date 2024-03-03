@@ -9,19 +9,14 @@ from openai import AzureOpenAI
 from rich.logging import RichHandler
 from tqdm import tqdm
 
-sys.path.append('../')
-from build_query import create_query_data
+from evaluation.build_query import create_query_data
 from utilities import read_json, save_json
-
-# from models import bard
-# from models import claude
-from models import gpt, llava
 
 
 def verify_response(response):
     if isinstance(response, str):
         response = response.strip()
-    if response == "" or response == None:
+    if response == "" or response is None:
         return False
     if "Response Error" in response:
         return False
@@ -69,9 +64,9 @@ def parse_args():
     parser.add_argument('--max_num_problems', type=int, default=-1, help='The number of problems to run')
     parser.add_argument('--save_every', type=int, default=100, help='save every n problems')
     # Local Model
-    parser.add_argument('--model_path', type=str, default="liuhaotian/llava-v1.5-7b")
+    parser.add_argument('--model_path', type=str, default=None)
     parser.add_argument("--model-base", type=str, default=None)
-    parser.add_argument("--conv-mode", type=str, default="llava_llama_2")
+    parser.add_argument("--conv-mode", type=str, default="vicuna_v1")
     parser.add_argument("--sep", type=str, default=",")
     parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--top_p", type=float, default=None)
@@ -106,12 +101,14 @@ def parse_args():
 
 
 def main():
+    logging.info("MathVista: Generating Responses - Start")
     args = parse_args()
 
     # load data
     logging.info(f"Loading dataset {args.dataset_name}, split {args.test_split_name}...")
     data_list = load_dataset(args.dataset_name, split=args.test_split_name)
-    # Convert Hugging Face data into local data format
+    # Convert Hugging Face data into dictionary to match local data format
+    # TODO: Convert scripts not to depend on dictionary .json format. Update to use .jsonl format
     data = {item['pid']: item for item in data_list}
 
     # load or create query data
@@ -147,19 +144,10 @@ def main():
 
         query_data = create_query_data(data, caption_data, ocr_data, args)
 
-    os.makedirs(args.output_dir, exist_ok=True)
-    output_file_path = os.path.join(args.output_dir, args.output_file)
-
-    # load results
-    if os.path.exists(output_file_path):
-        logging.info("Results already exist.")
-        logging.info(f"Reading {output_file_path}...")
-        results = read_json(output_file_path)
-    else:
-        results = {}
-
     # If we were given a custom model path, load that model, otherwise use a remote service model
     if args.model_path:
+        from models import llava
+
         logging.info(f"Loading model from {args.model_path}...")
         model = llava.Llava_Model(
             model_path=args.model_path,
@@ -169,19 +157,24 @@ def main():
             top_p=args.top_p,
             num_beams=args.num_beams,
             max_new_tokens=args.max_new_tokens,
+            seed_value=42,
         )
     else:
         model_name = args.azure_openai_model if args.azure_openai_model else args.model
         logging.info(f"Loading {model_name}...")
+
         if model_name == 'bard':
+            from models import bard
+
             if args.key == '':
                 logging.info("Loading key from environment variable")
                 key = os.environ['_BARD_API_KEY']
             else:
                 key = args.key
             model = bard.Bard_Model(key)
-
         elif "gpt" in model_name:
+            from models import gpt
+
             key = args.azure_openai_api_key if args.azure_openai_api_key else args.key
             if key == '':
                 key = os.getenv("OPENAI_API_KEY")
@@ -208,20 +201,31 @@ def main():
             model = gpt.GPT_Model(client=client, model=model_name)
 
         elif "claude" in model_name:
+            from models import claude
+
             if args.key == '':
                 logging.info("Loading token from environment variable")
                 key = os.environ.get("ANTHROPIC_API_KEY")
             else:
                 key = args.key
             model = claude.Claude_Model(model_name, key)
+        else:
+            raise ValueError(f"Model {model_name} not supported.")
 
     logging.info(f"Model loaded.")
 
-    # build final test pid list
     full_pids = list(data.keys())
-    if args.max_num_problems > 0:
-        full_pids = full_pids[: min(args.max_num_problems, len(full_pids))]
-        logging.warn(f'Limiting number of problems to {args.max_num_problems}.')
+
+    os.makedirs(args.output_dir, exist_ok=True)
+    output_file_path = os.path.join(args.output_dir, args.output_file)
+
+    # load results
+    if os.path.exists(output_file_path):
+        logging.info("Results already exist.")
+        logging.info(f"Reading {output_file_path}...")
+        results = read_json(output_file_path)
+    else:
+        results = {}
 
     skip_pids = []
     if not args.rerun:
@@ -239,30 +243,26 @@ def main():
         )
 
     test_pids = [pid for pid in full_pids if pid not in skip_pids]
+
+    if args.max_num_problems > 0:
+        test_pids = test_pids[: min(args.max_num_problems, len(test_pids))]
+        logging.warning(f'Limiting number of problems to {args.max_num_problems}.')
+
     logging.info(f"Number of test problems to run: {len(test_pids)}")
 
-    for i, (problem_id, item) in enumerate(tqdm(data.items())):
-        problem = item.copy()
+    for i, problem_id in enumerate(tqdm(test_pids)):
+        problem: dict = data[problem_id].copy()
 
         # Remove decoded Image for JSON deserialization
         problem_decoded_image = problem['decoded_image']
         problem.pop('decoded_image')
 
-        problem_id = problem['pid']
-        if problem_id not in test_pids:
-            continue
-
         query = query_data[problem_id]
-        image_relative_file_path = problem['image']
-        image_full_path = os.path.join(args.data_dir, image_relative_file_path)
 
         logging.debug("--------------------------------------------------------------")
         logging.debug(f"Generating response for index: {i} id: {problem_id}...")
         try:
-            response = model.get_response(
-                user_prompt=query, image_path=image_full_path, decoded_image=problem_decoded_image, problem=problem
-            )
-            logging.debug(f"Response: {response}")
+            response = model.get_response(user_prompt=query, decoded_image=problem_decoded_image)
             results[problem_id] = problem
             results[problem_id]['query'] = query
             if args.shot_type == 'solution':
@@ -288,12 +288,13 @@ def main():
                 logging.info(f"Error in saving {output_file_path}")
                 logging.info(e)
 
+    logging.info("MathVista: Generating Responses - Finish")
+
 
 if __name__ == '__main__':
     logging.basicConfig(
         level=os.environ.get("LOGLEVEL", "INFO").upper(),
-        # format="%(asctime)s [%(levelname)s] [%(name)s] %(message)s",
-        format="%(message)s",
+        format="[%(name)s] %(message)s",
         datefmt="[%X]",
         handlers=[
             RichHandler(
@@ -309,10 +310,13 @@ if __name__ == '__main__':
         "azure",
         "azureml",
         "datasets",
+        "httpx",
+        "httpcore",
         "filelock",
         "fsspec",
         "msal",
         "msrest",
+        "openai",
         "PIL",
         "urllib3",
     ]
