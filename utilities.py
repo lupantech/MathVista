@@ -1,8 +1,9 @@
-import os
-import cv2
 import json
+import os
 import pickle
 import re
+
+import cv2
 from word2number import w2n
 
 
