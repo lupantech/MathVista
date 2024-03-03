@@ -325,14 +325,6 @@ def get_full_metrics_str(metrics_dict) -> str:
     return metrics_str
 
 
-def get_metrics_for_combined_table(metrics_dict):
-    avg_accuracy = metrics_dict["average"]["accuracy"]
-    avg_correct = metrics_dict["average"]["correct"]
-    avg_total = metrics_dict["average"]["total"]
-
-    return 'Accuracy', f"{avg_accuracy * 100:.2f}% ({avg_correct}/{avg_total})"
-
-
 if __name__ == '__main__':
     logging.basicConfig(
         level=os.environ.get("LOGLEVEL", "INFO").upper(),
