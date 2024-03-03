@@ -1,31 +1,63 @@
+import base64
 import time
+from io import BytesIO
 from typing import Union
 
 from openai import AzureOpenAI, OpenAI
-from openai.types.chat import ChatCompletionMessageParam
+from openai.types.chat import ChatCompletionContentPartParam, ChatCompletionMessageParam
+from PIL import Image
 
 
 # build gpt class
-class GPT_Model():
-    def __init__(self, client: Union[OpenAI, AzureOpenAI], model="gpt-3.5-turbo", temperature=0, max_tokens=1024, n=1, patience=1000000, sleep_time=0):
+class GPT_Model:
+    def __init__(
+        self,
+        client: Union[OpenAI, AzureOpenAI],
+        model="gpt-3.5-turbo",
+        temperature=0,
+        max_tokens=1024,
+        n=1,
+        patience=1000000,
+        sleep_time=0,
+    ):
         self.client = client
         self.model = model
+        self.use_image = True if "vision" in model else False
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n = n
         self.patience = patience
         self.sleep_time = sleep_time
 
-    def get_response(self, user_prompt: str):
+    def get_response(self, user_prompt: str, decoded_image: Union[Image.Image, None] = None):
         patience = self.patience
         max_tokens = self.max_tokens
+
+        user_messages: list[ChatCompletionContentPartParam] = []
+
+        if self.use_image:
+            if decoded_image is None:
+                print(
+                    f'You are using a model that supports vision: {self.model}, '
+                    f'but no image was provided when generating a response. This is likely unintended.'
+                )
+            else:
+                buffered = BytesIO()
+                decoded_image.save(buffered, format="PNG")
+                base64_image_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+                user_messages.append(
+                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{base64_image_str}"}}
+                )
+
+        user_messages.append({"type": "text", "text": user_prompt})
+
         messages: list[ChatCompletionMessageParam] = [
-            {"role": "user", "content": user_prompt},
+            {"role": "user", "content": user_messages},
         ]
+
         while patience > 0:
             patience -= 1
             try:
-                # print("self.model", self.model)
                 response = self.client.chat.completions.create(
                     model=self.model,
                     messages=messages,
