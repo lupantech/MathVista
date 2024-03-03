@@ -146,19 +146,11 @@ def main():
 
     # If we were given a custom model path, load that model, otherwise use a remote service model
     if args.model_path:
-        from models import llava
+        # from models import llava
 
         logging.info(f"Loading model from {args.model_path}...")
-        model = llava.Llava_Model(
-            model_path=args.model_path,
-            model_base=args.model_base,
-            conv_mode=args.conv_mode,
-            temperature=args.temperature,
-            top_p=args.top_p,
-            num_beams=args.num_beams,
-            max_new_tokens=args.max_new_tokens,
-            seed_value=42,
-        )
+        # TODO: Add support for local models
+        raise NotImplementedError("Local models are not yet supported.")
     else:
         model_name = args.azure_openai_model if args.azure_openai_model else args.model
         logging.info(f"Loading {model_name}...")
