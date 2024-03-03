@@ -4,6 +4,9 @@ version = "1.0"
 requires-python = ">= 3.9"
 readme = "README.md"
 
+# TODO: Move dependencies from requirements.txt to here
+# dependencies = []
+
 [project.urls]
 "Homepage" = "https://mathvista.github.io/"
 "Bug Tracker" = "https://github.com/lupantech/MathVista/issues"
