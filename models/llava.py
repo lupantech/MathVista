@@ -1,14 +1,10 @@
-import logging
 import random
-from io import BytesIO
-from pathlib import Path
 import re
+from io import BytesIO
 
 import numpy as np
 import requests
 import torch
-from PIL import Image
-
 from llava.constants import (
     DEFAULT_IM_END_TOKEN,
     DEFAULT_IM_START_TOKEN,
@@ -20,6 +16,7 @@ from llava.conversation import SeparatorStyle, conv_templates
 from llava.mm_utils import KeywordsStoppingCriteria, get_model_name_from_path, process_images, tokenizer_image_token
 from llava.model.builder import load_pretrained_model
 from llava.utils import disable_torch_init
+from PIL import Image
 
 
 def image_parser(args):
@@ -58,9 +55,9 @@ def set_seed(seed_value):
 
 class Llava_Model:
 
-    def __init__(self, model_path, model_base, conv_mode, temperature, top_p, num_beams, max_new_tokens):
+    def __init__(self, model_path, model_base, conv_mode, temperature, top_p, num_beams, max_new_tokens, seed_value):
         disable_torch_init()
-        set_seed(42)
+        set_seed(seed_value)
         model_name = get_model_name_from_path(model_path)
         tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, model_base, model_name)
 
@@ -74,7 +71,7 @@ class Llava_Model:
         self.num_beams = num_beams
         self.max_new_tokens = max_new_tokens
 
-    def get_response(self, user_prompt: str, image_path: str, decoded_image: Image.Image, problem: dict):
+    def get_response(self, user_prompt: str, decoded_image: Image.Image):
         qs = user_prompt
         image_token_se = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN
         if IMAGE_PLACEHOLDER in qs:
@@ -93,16 +90,6 @@ class Llava_Model:
         conv.append_message(conv.roles[1], None)
         prompt = conv.get_prompt()
 
-        local_decoded_image = load_image(image_path)
-        output_folder_path = Path("/workspaces/ProjectWillow/_results/eval/mathvista/llava/debug/decoded_images")
-        output_folder_path.mkdir(parents=True, exist_ok=True)
-        local_decoded_image_path = output_folder_path / f"local_decode_{problem['pid']}.png"
-        local_decoded_image.save(local_decoded_image_path)
-        decoded_image_path = output_folder_path / f"hf_decode_{problem['pid']}.png"
-        decoded_image.save(decoded_image_path)
-        logging.debug(f"Saved local decoded image to {local_decoded_image_path}")
-        logging.debug(f"Saved HF decoded image to {decoded_image_path}")
-        # images = [local_decoded_image]
         images = [decoded_image.convert('RGB')]
         images_tensor = process_images(images, self.image_processor, self.model.config).to(
             self.model.device, dtype=torch.float16
@@ -133,12 +120,12 @@ class Llava_Model:
         n_diff_input_output = (input_ids != output_ids[:, :input_token_len]).sum().item()
         if n_diff_input_output > 0:
             print(f"[Warning] {n_diff_input_output} output_ids are not the same as the input_ids")
+
         outputs = self.tokenizer.batch_decode(output_ids[:, input_token_len:], skip_special_tokens=True)[0]
         outputs = outputs.strip()
 
         if outputs.endswith(stop_str):
             outputs = outputs[: -len(stop_str)]
-
         outputs = outputs.strip()
 
         return outputs
