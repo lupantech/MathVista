@@ -372,7 +372,7 @@ We provide images in the JPG format. You can download and unzip them using the f
 ```sh
 cd data
 wget https://huggingface.co/datasets/AI4Math/MathVista/resolve/main/images.zip
-unzip & rm images.zip
+unzip images.zip && rm images.zip
 ```
 
 This step might be optional if you prefer to use the Hugging Face format of the data.
