@@ -32,8 +32,12 @@ def normalize_extracted_answer(extraction, choices, question_type, answer_type, 
         else:
             try:
                 extraction = str(extraction)
-            except:
-                extraction = ""
+            except Exception:
+                return None
+
+        # if the extraction is empty, return None
+        if not extraction:
+            return None
     
         # extract "A" from "(A) text"
         letter = re.findall(r'\(([a-zA-Z])\)', extraction)
