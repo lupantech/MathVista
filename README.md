@@ -182,6 +182,22 @@ Accuracy scores on the **testmini** subset (1,000 examples):
 | 47    | **IDEFICS (9B-Instruct)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
 | 48    | **Random Chance**                    | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.9** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
 
+### Leaderboard on the test subset
+
+Accuracy scores on the **test** subset (5,141 examples):
+
+| **#** | **Model**                       | **Method** | **Source**                                                   | **Date**   | **ALL**   | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
+| ----- | ------------------------------- | ---------- | ------------------------------------------------------------ | ---------- | --------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| 1     | **InternVL-Chat-V1.2-Plus 🥇**   | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.14238)                     | 2024-02-22 | **60.18** | 52.2    | 56.2    | 78.3    | 61.6    | 55.5    | 56.0    | 64.4    | 57.6    | 21.6    | 46.1    | 60.0    | 60.1    |
+| 2     | **InternLM-XComposer2-VL-7B 🥈** | LMM 🖼️      | [Link](https://github.com/InternLM/InternLM-XComposer)       | 2024-01-22 | **57.93** | 53.9    | 56.4    | 77.1    | 58.4    | 43.2    | 54.8    | 57.6    | 58.0    | 16.5    | 47.6    | 59.1    | 62.5    |
+| 3     | **Qwen-VL-Plus 🥉**              | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-26 | **44.33** | 55.9    | 34.7    | 29.7    | 58.8    | 42.4    | 40.7    | 35.4    | 36.6    | 21.6    | 30.4    | 55.9    | 56.3    |
+| 4     | **SPHINX-MoE**                  | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-13 | **42.68** | 50.3    | 29.7    | 40.9    | 49.3    | 43.3    | 33.9    | 43.0    | 29.1    | 14.4    | 26.3    | 46.9    | 51.2    |
+| 5     | **MiniCPM-V-2 (2.8B)**          | LMM 🖼️      | [Link](https://github.com/OpenBMB/MiniCPM-V)                 | 2024-04-14 | **39.89** | 51.7    | 27.4    | 39.8    | 42.5    | 34.7    | 31.3    | 34.4    | 30.7    | 13.4    | 33.5    | 38.5    | 50.0    |
+| 6     | **PoT GPT-4 (Caption+OCR)**     | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **31.74** | 27.6    | 37.4    | 23.9    | 43.0    | 30.3    | 37.1    | 27.9    | 37.5    | 22.7    | 15.8    | 44.5    | 31.9    |
+| 7     | **CoT GPT4 (Caption+OCR)**      | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **30.50** | 27.2    | 35.9    | 21.3    | 43.1    | 28.2    | 35.7    | 25.2    | 35.8    | 24.7    | 15.4    | 47.3    | 31.3    |
+| 8     | **LLaVA (LLaMA-2-13B)**         | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.40** | 22.9    | 24.6    | 18.1    | 35.8    | 29.7    | 26.9    | 22.5    | 24.4    | 19.1    | 19.1    | 34.7    | 21.6    |
+| *     | **Random Chance**               | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.86** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
+
 Some notations in the table:
 
 - **Human Performance\*:** Average human performance from AMT annotators who have high school diplomas or above.
