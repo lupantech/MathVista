@@ -58,7 +58,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 
 ## 💥 News 💥
-- **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**!. Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
+- **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**! Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
 - **[2024.05.13]** 💥 **OpenAI's GPT-4o Outperforms Humans on MathVista!** For the first time, OpenAI's new GPT-4o model has achieved a higher score than the human average on MathVista, scoring **63.8** compared to humans' **60.3**. Learn more at the [OpenAI blog](https://openai.com/index/hello-gpt-4o/).
 - **[2024.01.16]** 🌟 Our **MathVista** paper has been accepted for an **Oral** presentation at **ICLR 2024** (only top 85 out of over 7200 submissions)! 🎉 Cheers!
 - **[2023.12.21]** 🚀 [Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Congratulations!
