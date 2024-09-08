@@ -25,7 +25,7 @@ For more details, please refer to the project page with dataset exploration and 
 </p>
 
 ## Outlines
-- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-)
+- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-performance-update-sept-8-2024-)
 - [💥 News 💥](https://github.com/lupantech/MathVista/blob/main/README.md#-news-)
 - [👀 About MathVista](https://github.com/lupantech/MathVista/blob/main/README.md#-about-mathvista)
 - [🏆 Leaderboard 🏆](https://github.com/lupantech/MathVista/blob/main/README.md#-leaderboard-)
