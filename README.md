@@ -60,7 +60,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 ## 💥 Spotlight: Performance Update (Sept 8, 2024) 💥
 
-- **Eight AI models** have now surpassed the average human performance level (based on AMT workers with at least a high school diploma).
+- **Eight models** have now surpassed the average human performance level (based on AMT workers with at least a high school diploma).
 - The top performers include:
   - 🥇 **[Grok-2](https://x.ai/blog/grok-2)**
   - 🥈 **[Grok-2 mini](https://x.ai/blog/grok-2)**
