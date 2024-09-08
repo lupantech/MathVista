@@ -24,7 +24,7 @@ For more details, please refer to the project page with dataset exploration and 
   <br>"A photo-based logo with a gradient of soft blue and modern typography, accompanied by the title 'MathVista'".
 </p>
 ## Outlines
-
+- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-)
 - [💥 News 💥](https://github.com/lupantech/MathVista/blob/main/README.md#-news-)
 - [👀 About MathVista](https://github.com/lupantech/MathVista/blob/main/README.md#-about-mathvista)
 - [🏆 Leaderboard 🏆](https://github.com/lupantech/MathVista/blob/main/README.md#-leaderboard-)
@@ -56,6 +56,14 @@ For more details, please refer to the project page with dataset exploration and 
 - [🤝 Contributors](https://github.com/lupantech/MathVista/blob/main/README.md#-contributors)
 
 
+
+## 💥 Spotlight: Performance Update (Sept 8, 2024) 💥
+
+- **Eight AI models** have now surpassed the average human performance level (based on AMT workers with at least a high school diploma).
+- The top performers include:
+  - 🥇 **[Grok-2](https://x.ai/blog/grok-2)**
+  - 🥈 **[Grok-2 mini](https://x.ai/blog/grok-2)**
+  - 🥉 **[Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet)**
 
 ## 💥 News 💥
 - **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**! Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
