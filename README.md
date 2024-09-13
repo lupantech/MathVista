@@ -25,7 +25,7 @@ For more details, please refer to the project page with dataset exploration and 
 </p>
 
 ## Outlines
-- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-performance-update-sept-8-2024-)
+- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-performance-update-sept-12-2024-)
 - [💥 News 💥](https://github.com/lupantech/MathVista/blob/main/README.md#-news-)
 - [👀 About MathVista](https://github.com/lupantech/MathVista/blob/main/README.md#-about-mathvista)
 - [🏆 Leaderboard 🏆](https://github.com/lupantech/MathVista/blob/main/README.md#-leaderboard-)
@@ -58,7 +58,7 @@ For more details, please refer to the project page with dataset exploration and 
 
 
 
-## 💥 Spotlight: Performance Update (Sept 8, 2024) 💥
+## 💥 Spotlight: Performance Update (Sept 12, 2024) 💥
 
 - **Eight models** have now surpassed the average human performance level (based on AMT workers with at least a high school diploma).
 - The top performers include:
@@ -67,7 +67,7 @@ For more details, please refer to the project page with dataset exploration and 
   - 🥉 **[Grok-2 mini](https://x.ai/blog/grok-2)**
 
 ## 💥 News 💥
-- **[2024.09.12]** 💥 **OpenAI o1 🥇 Sets New SOTA on MathVista with 73.2!** OpenAI’s latest large multimodal model breaks the 70% barrier on **MathVista**, setting a new SOTA. Read more on the [OpenAI blog](https://openai.com/index/learning-to-reason-with-llms/).
+- **[2024.09.12]** 💥 **OpenAI o1 🥇 Sets New SOTA on MathVista with 73.9!** OpenAI’s latest large multimodal model breaks the 70% barrier on **MathVista**, setting a new SOTA. Read more on the [OpenAI blog](https://openai.com/index/learning-to-reason-with-llms/).
 - **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**! Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
 - **[2024.05.13]** 💥 **OpenAI's GPT-4o Outperforms Humans on MathVista!** For the first time, OpenAI's new GPT-4o model has achieved a higher score than the human average on MathVista, scoring **63.8** compared to humans' **60.3**. Learn more at the [OpenAI blog](https://openai.com/index/hello-gpt-4o/).
 - **[2024.01.16]** 🌟 Our **MathVista** paper has been accepted for an **Oral** presentation at **ICLR 2024** (only top 85 out of over 7200 submissions)! 🎉 Cheers!
@@ -143,7 +143,7 @@ Accuracy scores on the **testmini** subset (1,000 examples):
 | **#** | **Model**                            | **Method** | **Source**                                                   | **Date**   | **ALL**  | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
 | ----- | ------------------------------------ | ---------- | ------------------------------------------------------------ | ---------- | -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
 | -     | **Human Performance\***              | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **60.3** | 59.7    | 48.4    | 73.0    | 63.2    | 55.9    | 50.9    | 59.2    | 51.4    | 40.7    | 53.8    | 64.9    | 63.9    |
-| 1     | **OpenAI o1 🥇**                      | LMM 🖼️      | [Link](https://openai.com/index/learning-to-reason-with-llms/) | 2024-09-12 | **73.2** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 1     | **OpenAI o1 🥇**                      | LMM 🖼️      | [Link](https://openai.com/index/learning-to-reason-with-llms/) | 2024-09-12 | **73.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 | 2     | **Grok-2 🥈**                         | LMM 🖼️      | [Link](https://x.ai/blog/grok-2)                             | 2024-08-13 | **69.0** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 | 3     | **Grok-2 mini 🥉**                    | LMM 🖼️      | [Link](https://x.ai/blog/grok-2)                             | 2024-08-13 | **68.1** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 | 4     | **Claude 3.5 Sonnet**                | LMM 🖼️      | [Link](https://www.anthropic.com/news/claude-3-5-sonnet)     | 2024-06-20 | **67.7** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
