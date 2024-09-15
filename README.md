@@ -24,10 +24,53 @@ For more details, please refer to the project page with dataset exploration and 
   <br>"A photo-based logo with a gradient of soft blue and modern typography, accompanied by the title 'MathVista'".
 </p>
 
+## Outlines
+- [🔦 Spotlight 🔦](https://github.com/lupantech/MathVista/blob/main/README.md#-spotlight-performance-update-sept-12-2024-)
+- [💥 News 💥](https://github.com/lupantech/MathVista/blob/main/README.md#-news-)
+- [👀 About MathVista](https://github.com/lupantech/MathVista/blob/main/README.md#-about-mathvista)
+- [🏆 Leaderboard 🏆](https://github.com/lupantech/MathVista/blob/main/README.md#-leaderboard-)
+  - [Contributing the Leaderboard](https://github.com/lupantech/MathVista/blob/main/README.md#contributing-the-leaderboard)
+  - [Leaderboard on the testmini subset](https://github.com/lupantech/MathVista/blob/main/README.md#leaderboard-on-the-testmini-subset)
+  - [Leaderboard on the test subset](https://github.com/lupantech/MathVista/blob/main/README.md#leaderboard-on-the-test-subset)
+- [📊 Dataset Examples](https://github.com/lupantech/MathVista/blob/main/README.md#-dataset-examples)
+- [📖 Dataset Usage](https://github.com/lupantech/MathVista/blob/main/README.md#-dataset-usage)
+  - [Data Source](https://github.com/lupantech/MathVista/blob/main/README.md#-dataset-usage)
+  - [Data Downloading](https://github.com/lupantech/MathVista/blob/main/README.md#data-downloading)
+  - [Data Format](https://github.com/lupantech/MathVista/blob/main/README.md#data-format)
+  - [Data Visualization](https://github.com/lupantech/MathVista/blob/main/README.md#data-visualization)
+  - [Usage Demos](https://github.com/lupantech/MathVista/blob/main/README.md#usage-demos)
+- [🔮 Evaluations on MathVista](https://github.com/lupantech/MathVista/blob/main/README.md#-evaluations-on-mathvista)
+  - [Requirements (Optional)](https://github.com/lupantech/MathVista/blob/main/README.md#requirements-optional)
+  - [Downloading Images (Optional)](https://github.com/lupantech/MathVista/blob/main/README.md#downloading-images-optional)
+  - [Evaluation Pipelines](https://github.com/lupantech/MathVista/blob/main/README.md#evaluation-pipelines)
+- [📝 Evaluation Scripts of Our Models](https://github.com/lupantech/MathVista/blob/main/README.md#-evaluation-scripts-of-our-models)
+  - [Evaluating Multimodal Bard](https://github.com/lupantech/MathVista/blob/main/README.md#evaluating-multimodal-bard)
+  - [Evaluating Chain-of-Thought GPT-4](https://github.com/lupantech/MathVista/blob/main/README.md#evaluating-chain-of-thought-gpt-4)
+  - [Evaluating Program-of-Thought GPT-4](https://github.com/lupantech/MathVista/blob/main/README.md#evaluating-program-of-thought-gpt-4)
+  - [Evaluating More Settings](https://github.com/lupantech/MathVista/blob/main/README.md#evaluating-more-settings)
+  - [Evaluating Large Multimodal Models](https://github.com/lupantech/MathVista/blob/main/README.md#evaluating-large-multimodal-models)
+- [📈 Evaluation Results](https://github.com/lupantech/MathVista/blob/main/README.md#-evaluation-results)
+- [📜 License](https://github.com/lupantech/MathVista/blob/main/README.md#-license)
+- [☕ Stay Connected!](https://github.com/lupantech/MathVista/blob/main/README.md#coffee-stay-connected)
+- [✅ Cite](https://github.com/lupantech/MathVista/blob/main/README.md#white_check_mark-cite)
+- [🧠 Related Work](https://github.com/lupantech/MathVista/blob/main/README.md#-related-work)
+- [🤝 Contributors](https://github.com/lupantech/MathVista/blob/main/README.md#-contributors)
+
+
+
+## 💥 Spotlight: Performance Update (Sept 12, 2024) 💥
+
+- **Eight models** have now surpassed the average human performance level (based on AMT workers with at least a high school diploma).
+- The top performers include:
+  - 🥇 **[OpenAI o1](https://openai.com/index/learning-to-reason-with-llms/)**
+  - 🥈 **[Grok-2](https://x.ai/blog/grok-2)**
+  - 🥉 **[Grok-2 mini](https://x.ai/blog/grok-2)**
 
 ## 💥 News 💥
-
-- **[2023.01.16]** 🌟 Our **MathVista** paper has been accepted for an **Oral** presentation at **ICLR 2024** (only top 85 out of over 7200 submissions)! 🎉 Cheers!
+- **[2024.09.12]** 💥 **OpenAI o1 🥇 Sets New SOTA on MathVista with 73.9!** OpenAI’s latest large multimodal model breaks the 70% barrier on **MathVista**, setting a new SOTA. Read more on the [OpenAI blog](https://openai.com/index/learning-to-reason-with-llms/).
+- **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**! Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
+- **[2024.05.13]** 💥 **OpenAI's GPT-4o Outperforms Humans on MathVista!** For the first time, OpenAI's new GPT-4o model has achieved a higher score than the human average on MathVista, scoring **63.8** compared to humans' **60.3**. Learn more at the [OpenAI blog](https://openai.com/index/hello-gpt-4o/).
+- **[2024.01.16]** 🌟 Our **MathVista** paper has been accepted for an **Oral** presentation at **ICLR 2024** (only top 85 out of over 7200 submissions)! 🎉 Cheers!
 - **[2023.12.21]** 🚀 [Qwen-VL-Plus](https://github.com/QwenLM/Qwen-VL) achieves **43.3%**, establishing itself as the best-performing one in open-sourced models. 🎉 Congratulations!
 - **[2023.12.08]** 🔍 We've updated the leaderboard and radar graphs with the **fine-grained scores** of the **Gemini** family models. Thanks to the Gemini Team and Google for providing us with these results! 👏
 - **[2023.12.06]** 🚀 Google's newly released multimodal model, [Gemini](https://blog.google/technology/ai/google-gemini-ai/), shows impressive abilities on **MathVista**, achieving a new SOTA performance with **50.3%**! 🎉  Cheers!!
@@ -50,7 +93,7 @@ For more details, please refer to the project page with dataset exploration and 
   Source dataset distribution of <b>MathVista</b>.
 </p>
 
-With **MathVista**, we have conducted **a comprehensive, quantitative evaluation of 12 prominent foundation models**. The best-performing **GPT-4V** model achieves an overall accuracy of **49.9%**, substantially outperforming Bard, the second-best performer, by **15.1%**. Our in-depth analysis reveals that the superiority of **GPT-4V** is mainly attributed to its enhanced visual perception and mathematical reasoning. However, **GPT-4V** still falls short of human performance by **10.4%**, as it often struggles to understand complex figures and perform rigorous reasoning. This significant gap underscores the critical role that **MathVista** will play in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. 
+In October 2023, we conducted **a comprehensive, quantitative evaluation of 12 prominent foundation models** with **MathVista**. The best-performing **GPT-4V** model achieved an overall accuracy of **49.9%**, substantially outperforming Bard, the second-best performer, by **15.1%**. Our in-depth analysis revealed that the superiority of **GPT-4V** is mainly attributed to its enhanced visual perception and mathematical reasoning. However, **GPT-4V** still falls short of human performance by **10.4%**, as it often struggles to understand complex figures and perform rigorous reasoning. This significant gap underscores the critical role that **MathVista** will play in the development of general-purpose AI agents capable of tackling mathematically intensive and visually rich real-world tasks. 
 
 <p align="center">
     <img src="assets/score_leaderboard_gpt4v.png" width="70%"> <br>
@@ -78,47 +121,89 @@ For more details, you can find our project page [here](https://mathvista.github.
 
 ## 🏆 Leaderboard 🏆
 
-🚨🚨 The leaderboard is continuously being updated. To submit your results to the leaderboard, please send to [this email](mailto:lupantech@gmail.com) with your result json file, referring to the template files available [here](https://github.com/lupantech/MathVista/tree/main/results/leaderboad_submission_template).
+### Contributing the Leaderboard
+
+🚨🚨 The leaderboard is continuously being updated. 
+
+The evaluation instructions are available at [🔮 Evaluations on MathVista](https://github.com/lupantech/MathVista?tab=readme-ov-file#-evaluations-on-mathvista) and [📝 Evaluation Scripts of Our Models](https://github.com/lupantech/MathVista?tab=readme-ov-file#-evaluation-scripts-of-our-models).
+
+To submit your results to the leaderboard on the **testmini** subset, please send to [this email](mailto:lupantech@gmail.com) with your result json file and score json file, referring to the template files below:
+
+- [output_testmini_template_for_leaderboard_submission.json](https://github.com/lupantech/MathVista/blob/main/results/leaderboad_submission_template/output_testmini_template_for_leaderboard_submission.json)
+- [scores_testmini_template_for_leaderboard_submission.json](https://github.com/lupantech/MathVista/blob/main/results/leaderboad_submission_template/scores_testmini_template_for_leaderboard_submission.json)
+
+To submit your results to the leaderboard on the **test** subset, please send to [this email](mailto:lupantech@gmail.com) with your result file (**we will generate the score file for you**),  referring to the template file below:
+
+- [output_test_template_for_leaderboard_submission.json](https://github.com/lupantech/MathVista/blob/main/results/leaderboad_submission_template/output_test_template_for_leaderboard_submission.json)
+
+### Leaderboard on the testmini subset
 
 Accuracy scores on the **testmini** subset (1,000 examples):
 
-| **#** | **Model**                     | **Method** | **Source**                                                   | **Date**   | **ALL**  | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
-| ----- | ----------------------------- | ---------- | ------------------------------------------------------------ | ---------- | -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| -     | **Human Performance\***       | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **60.3** | 59.7    | 48.4    | 73.0    | 63.2    | 55.9    | 50.9    | 59.2    | 51.4    | 40.7    | 53.8    | 64.9    | 63.9    |
-| 1     | **Gemini Ultra 🥇**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **53.0** | 49.1    | 56.2    | 53.8    | 69.0    | 40.2    | 58.4    | 45.9    | 55.6    | 21.6    | 38.9    | 62.3    | 59.5    |
-| 2     | **GPT-4V (Playground) 🥈**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-15 | **49.9** | 43.1    | 50.5    | 57.5    | 65.2    | 38.0    | 53.0    | 49.0    | 51.0    | 21.6    | 20.1    | 63.1    | 55.8    |
-| 3     | **Gemini Pro 🥉**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **45.2** | 47.6    | 40.4    | 39.2    | 61.4    | 39.1    | 45.2    | 38.8    | 41.0    | 10.8    | 32.6    | 54.9    | 56.8    |
-| 4     | **Qwen-VL-Plus**              | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-21 | **43.3** | 54.6    | 38.5    | 31.2    | 55.1    | 34.1    | 39.1    | 32.0    | 39.3    | 18.9    | 26.4    | 59.0    | 56.1    |
-| 5     | **SPHINX-MoE**                | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **42.3** | 49.8    | 31.2    | 42.5    | 46.8    | 39.7    | 31.7    | 41.6    | 30.5    | 16.2    | 27.1    | 50.8    | 50.8    |
-| 6     | **SPHINX (V2)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-17 | **36.7** | 54.6    | 16.4    | 23.1    | 41.8    | 43.0    | 20.6    | 33.4    | 17.6    | 24.3    | 21.5    | 43.4    | 51.5    |
-| 7     | **Multimodal Bard**           | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
-| 8     | **PoT GPT-4 (Caption+OCR)**   | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
-| 9     | **CoT Claude (Caption+OCR)**  | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
-| 10    | **CoT GPT4 (Caption+OCR)**    | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
-| 11    | **CoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
-| 12    | **Gemini Nano 2**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **30.6** | 28.6    | 23.6    | 30.6    | 41.8    | 31.8    | 27.1    | 29.8    | 26.8    | 10.8    | 20.8    | 40.2    | 33.5    |
-| 13    | **SPHINX (V1)**               | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-09 | **27.5** | 23.4    | 23.1    | 21.5    | 39.9    | 34.1    | 25.6    | 28.1    | 23.4    | 16.2    | 17.4    | 40.2    | 23.6    |
-| 14    | **Gemini Nano 1**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **27.3** | 30.9    | 21.6    | 23.7    | 29.1    | 30.7    | 23.8    | 25.5    | 21.3    | 13.5    | 20.8    | 27.9    | 30.9    |
-| 15    | **PoT ChatGPT (Caption+OCR)** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
-| 16    | **LLaVA (LLaMA-2-13B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
-| 17    | **InstructBLIP (Vicuna-7B)**  | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
-| 18    | **LLaVAR**                    | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
-| 19    | **LLaMA-Adapter-V2 (7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
-| 20    | **miniGPT4 (LLaMA-2-7B)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
-| 21    | **mPLUG-Owl (LLaMA-7B)**      | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
-| 22    | **IDEFICS (9B-Instruct)**     | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
-| 23    | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.9** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
-
-Accuracy scores on the **test** subset (5,141 examples):
-
-| **#** | **Model**                     | **Method** | **Source**                                                   | **Date**   | **ALL**   | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
-| ----- | ----------------------------- | ---------- | ------------------------------------------------------------ | ---------- | --------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
-| 1     | **Qwen-VL-Plus 🥇**            | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-26 | **44.33** | 55.9    | 34.7    | 29.7    | 58.8    | 42.4    | 40.7    | 35.4    | 36.6    | 21.6    | 30.4    | 55.9    | 56.3    |
-| 2     | **SPHINX-MoE 🥈**              | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-13 | **42.68** | 50.3    | 29.7    | 40.9    | 49.3    | 43.3    | 33.9    | 43.0    | 29.1    | 14.4    | 26.3    | 46.9    | 51.2    |
-| 3     | **PoT GPT-4 (Caption+OCR) 🥉** | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **31.74** | 27.6    | 37.4    | 23.9    | 43.0    | 30.3    | 37.1    | 27.9    | 37.5    | 22.7    | 15.8    | 44.5    | 31.9    |
-| 4     | **CoT GPT4 (Caption+OCR)**    | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **30.50** | 27.2    | 35.9    | 21.3    | 43.1    | 28.2    | 35.7    | 25.2    | 35.8    | 24.7    | 15.4    | 47.3    | 31.3    |
-| 5     | **LLaVA (LLaMA-2-13B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.40** | 22.9    | 24.6    | 18.1    | 35.8    | 29.7    | 26.9    | 22.5    | 24.4    | 19.1    | 19.1    | 34.7    | 21.6    |
-| *     | **Random Chance**             | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.86** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
+| **#** | **Model**                            | **Method** | **Source**                                                   | **Date**   | **ALL**  | **FQA** | **GPS** | **MWP** | **TQA** | **VQA** | **ALG** | **ARI** | **GEO** | **LOG** | **NUM** | **SCI** | **STA** |
+| ----- | ------------------------------------ | ---------- | ------------------------------------------------------------ | ---------- | -------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- | ------- |
+| -     | **Human Performance\***              | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **60.3** | 59.7    | 48.4    | 73.0    | 63.2    | 55.9    | 50.9    | 59.2    | 51.4    | 40.7    | 53.8    | 64.9    | 63.9    |
+| 1     | **OpenAI o1 🥇**                      | LMM 🖼️      | [Link](https://openai.com/index/learning-to-reason-with-llms/) | 2024-09-12 | **73.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 2     | **Grok-2 🥈**                         | LMM 🖼️      | [Link](https://x.ai/blog/grok-2)                             | 2024-08-13 | **69.0** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 3     | **Grok-2 mini 🥉**                    | LMM 🖼️      | [Link](https://x.ai/blog/grok-2)                             | 2024-08-13 | **68.1** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 4     | **Claude 3.5 Sonnet**                | LMM 🖼️      | [Link](https://www.anthropic.com/news/claude-3-5-sonnet)     | 2024-06-20 | **67.7** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 5     | **LLaVA-OneVision**                  | LMM 🖼️      | [Link](https://llava-vl.github.io/blog/2024-08-05-llava-onevision/) | 2024-08-06 | **67.5** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 6     | **InternVL2-Pro**                    | LMM 🖼️      | [Link](https://github.com/OpenGVLab/InternVL)                | 2024-09-04 | **66.8** | 70.6    | 65.4    | 76.9    | 71.5    | 48.0    | 66.5    | 62.3    | 63.6    | 27.0    | 40.3    | 65.6    | 81.1    |
+| 7     | **TextGrad (GPT-4o)**                | LMM 🖼️      | [Link](https://github.com/zou-group/textgrad)                | 2024-07-08 | **66.1** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 8     | **Gemini 1.5 Pro (May 2024)**        | LMM 🖼️      | [Link](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf) | 2024-05-17 | **63.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 9     | **GPT-4o**                           | LMM 🖼️      | [Link](https://openai.com/index/hello-gpt-4o/)               | 2024-05-13 | **63.8** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 10    | **InternVL-Chat-V1.2-Plus**          | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.14238)                     | 2024-02-22 | **59.9** | 51.7    | 61.1    | 79.6    | 52.5    | 57.0    | 54.5    | 63.2    | 61.1    | 16.2    | 48.6    | 55.7    | 60.8    |
+| 11    | **Gemini 1.5 Flash (May 2024)**      | LMM 🖼️      | [Link](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf) | 2024-05-17 | **58.4** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 12    | **GPT-4T 2024-04-09**                | LMM 🖼️      | [Link](https://openai.com/index/hello-gpt-4o/)               | 2024-05-13 | **58.1** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 13    | **Pixtral 12B**                      | LMM 🖼️      | [Link](https://x.com/_philschmid/status/1833954941624615151) | 2024-09-11 | **58.0** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 14    | **InternLM-XComposer2-VL-7B**        | LMM 🖼️      | [Link](https://github.com/InternLM/InternLM-XComposer)       | 2024-01-22 | **57.6** | 55.0    | 63.0    | 73.7    | 56.3    | 39.7    | 56.6    | 52.4    | 62.3    | 8.1     | 42.4    | 59.0    | 64.1    |
+| 15    | **Gemini 1.0 Ultra**                 | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **53.0** | 49.1    | 56.2    | 53.8    | 69.0    | 40.2    | 58.4    | 45.9    | 55.6    | 21.6    | 38.9    | 62.3    | 59.5    |
+| 16    | **Grok-1.5V**                        | LMM 🖼️      | [Link](https://x.ai/blog/grok-1.5v)                          | 2024-04-12 | **52.8** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 17    | **Gemini 1.5 Pro (Feb 2024)**        | LMM 🖼️      | [Link](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf) | 2024-02-15 | **52.1** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 18    | **Claude 3 Opus**                    | LMM 🖼️      | [Link](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf) | 2024-03-04 | **50.5** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 19    | **GPT-4V (Playground)**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-15 | **49.9** | 43.1    | 50.5    | 57.5    | 65.2    | 38.0    | 53.0    | 49.0    | 51.0    | 21.6    | 20.1    | 63.1    | 55.8    |
+| 20    | **Claude 3 Sonnet**                  | LMM 🖼️      | [Link](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf) | 2024-03-04 | **47.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 21    | **InternVL-Chat-V1.2**               | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.14238)                     | 2024-02-22 | **47.7** | 50.9    | 61.1    | 30.6    | 48.1    | 44.7    | 52.3    | 36.5    | 58.2    | 18.9    | 30.6    | 54.9    | 51.8    |
+| 22    | **Math-LLaVA-13B**                   | LMM 🖼️      | [Link](http://arxiv.org/abs/2406.17294)                      | 2024-06-25 | **46.6** | 37.2    | 57.7    | 56.5    | 51.3    | 33.5    | 53.0    | 40.2    | 56.5    | 16.2    | 33.3    | 49.2    | 43.9    |
+| 23    | **LLaVA-NeXT-34B**                   | LMM 🖼️      | [Link](https://llava-vl.github.io/blog/2024-01-30-llava-1-6/) | 2024-01-30 | **46.5** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 24    | **Claude 3 Haiku**                   | LMM 🖼️      | [Link](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf) | 2024-03-04 | **46.4** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 25    | **Gemini 1.0 Pro**                   | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **45.2** | 47.6    | 40.4    | 39.2    | 61.4    | 39.1    | 45.2    | 38.8    | 41.0    | 10.8    | 32.6    | 54.9    | 56.8    |
+| 26    | **Phi-3-Vision-128K-In**             | LMM 🖼️      | [Link](https://huggingface.co/microsoft/Phi-3-vision-128k-instruct) | 2024-05-21 | **44.5** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 27    | **Phi-3.5-Vision 4.2B**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2404.14219)                     | 2024-04-22 | **43.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 28    | **Qwen-VL-Plus**                     | LMM 🖼️      | [Link](https://github.com/QwenLM/Qwen-VL)                    | 2023-12-21 | **43.3** | 54.6    | 38.5    | 31.2    | 55.1    | 34.1    | 39.1    | 32.0    | 39.3    | 18.9    | 26.4    | 59.0    | 56.1    |
+| 29    | **Mini-Gemini-HD (Hermes-2-Yi-34B)** | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.18814)                     | 2024-03-27 | **43.3** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 30    | **SPHINX-MoE**                       | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **42.3** | 49.8    | 31.2    | 42.5    | 46.8    | 39.7    | 31.7    | 41.6    | 30.5    | 16.2    | 27.1    | 50.8    | 50.8    |
+| 31    | **Mini-Gemini (Mixtral-8x7B)**       | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.18814)                     | 2024-03-27 | **41.8** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 32    | **MM1-7B-MoE-Chat**                  | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.09611)                     | 2024-03-14 | **40.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 33    | **MiniCPM-V-2 (2.8B)**               | LMM 🖼️      | [Link](https://github.com/OpenBMB/MiniCPM-V)                 | 2024-04-14 | **40.6** | 53.2    | 26.0    | 37.1    | 44.3    | 39.1    | 28.5    | 33.1    | 28.0    | 10.8    | 39.6    | 48.4    | 51.8    |
+| 34    | **MM1-30B-Chat**                     | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.09611)                     | 2024-03-14 | **39.4** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 35    | **SPHINX-Plus**                      | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **36.8** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 36    | **SPHINX (V2)**                      | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-17 | **36.7** | 54.6    | 16.4    | 23.1    | 41.8    | 43.0    | 20.6    | 33.4    | 17.6    | 24.3    | 21.5    | 43.4    | 51.5    |
+| 37    | **MM1-7B-Chat**                      | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.09611)                     | 2024-03-14 | **35.9** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 38    | **SPHINX-Intern2**                   | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **35.5** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 39    | **OmniLMM-12B**                      | LMM 🖼️      | [Link](https://github.com/OpenBMB/OmniLMM)                   | 2024-02-01 | **34.9** | 45.0    | 17.8    | 26.9    | 44.9    | 39.1    | 23.1    | 32.3    | 20.9    | 18.9    | 27.8    | 45.9    | 44.2    |
+| 40    | **Multimodal Bard**                  | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **34.8** | 26.0    | 47.1    | 29.6    | 48.7    | 26.8    | 46.5    | 28.6    | 47.8    | 13.5    | 14.9    | 47.5    | 33.0    |
+| 41    | **LLaVA-NeXT-Vicuna-7B**             | LMM 🖼️      | [Link](https://llava-vl.github.io/blog/2024-01-30-llava-next/) | 2024-01-30 | **34.6** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 42    | **PoT GPT-4 (Caption+OCR)**          | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.9** | 30.1    | 39.4    | 30.6    | 39.9    | 31.3    | 37.4    | 31.7    | 41.0    | 18.9    | 20.1    | 44.3    | 37.9    |
+| 43    | **CoT Claude (Caption+OCR)**         | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.5    | 29.3    | 36.0    | 49.4    | 29.1    | 31.0    | 32.9    | 31.0    | 16.2    | 17.4    | 50.8    | 37.2    |
+| 44    | **CoT GPT4 (Caption+OCR)**           | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 27.9    | 31.7    | 31.2    | 51.9    | 28.5    | 33.5    | 30.9    | 32.2    | 13.5    | 12.5    | 58.2    | 37.9    |
+| 45    | **CoT ChatGPT (Caption+OCR)**        | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **33.2** | 26.0    | 31.7    | 35.5    | 48.1    | 30.2    | 32.4    | 32.3    | 33.0    | 16.2    | 17.4    | 54.9    | 36.2    |
+| 46    | **MM1-3B-MoE-Chat**                  | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.09611)                     | 2024-03-14 | **32.6** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 47    | **MM1-3B-Chat**                      | LMM 🖼️      | [Link](https://arxiv.org/abs/2403.09611)                     | 2024-03-14 | **32.0** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 48    | **Gemini 1.0 Nano 2**                | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **30.6** | 28.6    | 23.6    | 30.6    | 41.8    | 31.8    | 27.1    | 29.8    | 26.8    | 10.8    | 20.8    | 40.2    | 33.5    |
+| 49    | **LLaVA-1.5-13B**                    | LMM 🖼️      | [Link](https://llava-vl.github.io/blog/2024-01-30-llava-1-6/) | 2024-01-30 | **27.6** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 50    | **SPHINX (V1)**                      | LMM 🖼️      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2023-11-09 | **27.5** | 23.4    | 23.1    | 21.5    | 39.9    | 34.1    | 25.6    | 28.1    | 23.4    | 16.2    | 17.4    | 40.2    | 23.6    |
+| 51    | **Gemini 1.0 Nano 1**                | LMM 🖼️      | [Link](https://arxiv.org/abs/2312.11805)                     | 2023-12-06 | **27.3** | 30.9    | 21.6    | 23.7    | 29.1    | 30.7    | 23.8    | 25.5    | 21.3    | 13.5    | 20.8    | 27.9    | 30.9    |
+| 52    | **PoT ChatGPT (Caption+OCR)**        | Tool 🛠️     | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.8** | 24.5    | 26.4    | 23.7    | 33.5    | 27.9    | 27.8    | 26.1    | 28.0    | 18.9    | 13.2    | 33.6    | 29.9    |
+| 53    | **SPHINX-Tiny**                      | MoE 🤖      | [Link](https://github.com/Alpha-VLLM/LLaMA2-Accessory/tree/main/SPHINX) | 2024-01-12 | **26.4** | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+| 54    | **LLaVA (LLaMA-2-13B)**              | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **26.1** | 26.8    | 29.3    | 16.1    | 32.3    | 26.3    | 27.3    | 20.1    | 28.8    | 24.3    | 18.3    | 37.3    | 25.1    |
+| 55    | **InstructBLIP (Vicuna-7B)**         | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.3** | 23.1    | 20.7    | 18.3    | 32.3    | 35.2    | 21.8    | 27.1    | 20.7    | 18.9    | 20.4    | 33.0    | 23.1    |
+| 56    | **LLaVAR**                           | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **25.2** | 21.9    | 25.0    | 16.7    | 34.8    | 30.7    | 24.2    | 22.1    | 23.0    | 13.5    | 15.3    | 42.6    | 21.9    |
+| 57    | **LLaMA-Adapter-V2 (7B)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.9** | 21.2    | 25.5    | 11.3    | 32.3    | 31.8    | 26.3    | 20.4    | 24.3    | 24.3    | 13.9    | 29.5    | 18.3    |
+| 58    | **miniGPT4 (LLaMA-2-7B)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **23.1** | 18.6    | 26.0    | 13.4    | 30.4    | 30.2    | 28.1    | 21.0    | 24.7    | 16.2    | 16.7    | 25.4    | 17.9    |
+| 59    | **mPLUG-Owl (LLaMA-7B)**             | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **22.2** | 22.7    | 23.6    | 10.2    | 27.2    | 27.9    | 23.6    | 19.2    | 23.9    | 13.5    | 12.7    | 26.3    | 21.4    |
+| 60    | **IDEFICS (9B-Instruct)**            | LMM 🖼️      | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **19.8** | 21.6    | 21.1    | 6.5     | 25.9    | 24.0    | 22.1    | 15.0    | 19.8    | 18.9    | 9.9     | 24.6    | 18.1    |
+| 61    | **Random Chance**                    | -          | [Link](https://arxiv.org/abs/2310.02255)                     | 2023-10-03 | **17.9** | 15.5    | 24.1    | 4.5     | 23.4    | 24.3    | 25.8    | 13.8    | 22.7    | 13.4    | 8.8     | 15.8    | 14.3    |
 
 Some notations in the table:
 
@@ -310,7 +395,7 @@ We provide images in the JPG format. You can download and unzip them using the f
 ```sh
 cd data
 wget https://huggingface.co/datasets/AI4Math/MathVista/resolve/main/images.zip
-unzip & rm images.zip
+unzip images.zip && rm images.zip
 ```
 
 This step might be optional if you prefer to use the Hugging Face format of the data.
@@ -393,7 +478,7 @@ Additionally, ensure that the API keys for ChatGPT, GPT-4, Claude-2, and Bard ar
 
 If you have setted Multimodal Bard, you can run the following commands:
 
-Generate the response:
+Generate the response on the **testmini** subset:
 
 ```sh
 cd evaluation
@@ -404,7 +489,7 @@ python generate_response.py \
 --output_file output_bard.json
 ```
 
-Extract the short answer text for score calculation:
+Extract the short answer text for score calculation on the **testmini** subset:
 
 ```sh
 python extract_answer.py \
@@ -412,7 +497,7 @@ python extract_answer.py \
 --output_file output_bard.json 
 ```
 
-Calculate the final score:
+Calculate the final score on the **testmini** subset:
 
 ```sh
 python calculate_score.py \
@@ -421,9 +506,27 @@ python calculate_score.py \
 --score_file scores_bard.json
 ```
 
+Generate the response of the **test** subset:
+
+```sh
+python generate_response.py \
+--model bard \
+--input_file test.json \
+--output_dir ../results/bard \
+--output_file output_bard_test.json
+```
+
+Extract the short answer text for score calculation on the **test** subset:
+
+```sh
+python extract_answer.py \
+--output_dir ../results/bard \
+--output_file output_bard_test.json 
+```
+
 ### Evaluating Chain-of-Thought GPT-4
 
-Generate the response:
+Generate the response on the **testmini** subset:
 
 ```sh
 cd evaluation
@@ -440,7 +543,7 @@ python generate_response.py \
 --ocr_file ../data/texts/ocrs_easyocr.json 
 ```
 
-Extract the short answer text for score calculation:
+Extract the short answer text for score calculation on the **testmini** subset:
 
 ```sh
 python extract_answer.py \
@@ -448,7 +551,7 @@ python extract_answer.py \
 --output_file output_gpt4_2shot_solution_use_caption_ocr.json
 ```
 
-Calculate the final score:
+Calculate the final score on the **testmini** subset:
 
 ```sh
 python calculate_score.py \
@@ -457,9 +560,33 @@ python calculate_score.py \
 --score_file scores_gpt4_2shot_solution_use_caption_ocr.json
 ```
 
+Generate the response of the **test** subset:
+
+```sh
+python generate_response.py \
+--model gpt-4-0613 \
+-input_file test.json \
+--output_dir ../results/gpt4 \
+--output_file output_test_gpt4_2shot_code_use_caption_ocr.json \
+--shot_num 2 \
+--shot_type solution \
+--use_caption \
+--use_ocr \
+--caption_file ../data/texts/captions_bard.json \
+--ocr_file ../data/texts/ocrs_easyocr.json 
+```
+
+Extract the short answer text for score calculation on the **test** subset:
+
+```sh
+python extract_answer.py \
+--output_dir ../results/bard \
+--output_file output_test_gpt4_2shot_code_use_caption_ocr.json 
+```
+
 ### Evaluating Program-of-Thought GPT-4
 
-Generate the response:
+Generate the response on the **testmini** subset:
 
 ```sh
 cd evaluation
@@ -476,7 +603,7 @@ python generate_response.py \
 --ocr_file ../data/texts/ocrs_easyocr.json 
 ```
 
-Extract the short answer text for score calculation:
+Extract the short answer text for score calculation on the **testmini** subset:
 
 ```sh
 python extract_answer.py \
@@ -485,13 +612,38 @@ python extract_answer.py \
 --response_label execution
 ```
 
-Calculate the final score:
+Calculate the final score on the **testmini** subset:
 
 ```sh
 python calculate_score.py \
 --output_dir ../results/gpt4 \
 --output_file output_gpt4_2shot_code_use_caption_ocr.json \
 --score_file scores_gpt4_2shot_code_use_caption_ocr.json
+```
+
+Generate the response of the **test** subset:
+
+```sh
+python generate_response.py \
+--model gpt-4-0613 \
+--input_file test.json \
+--output_dir ../results/gpt4 \
+--output_file output_test_gpt4_2shot_code_use_caption_ocr.json \
+--shot_num 2 \
+--shot_type code \
+--use_caption \
+--use_ocr \
+--caption_file ../data/texts/captions_bard.json \
+--ocr_file ../data/texts/ocrs_easyocr.json 
+```
+
+Extract the short answer text for score calculation on the **test** subset:
+
+```sh
+python extract_answer.py \
+--output_dir ../results/gpt4 \
+--output_file output_test_gpt4_2shot_code_use_caption_ocr.json \
+--response_label execution
 ```
 
 ### Evaluating More Settings
