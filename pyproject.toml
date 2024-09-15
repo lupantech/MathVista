@@ -1,0 +1,46 @@
+[project]
+name = "MathVista"
+version = "1.0"
+requires-python = ">= 3.9"
+readme = "README.md"
+
+# TODO: Move dependencies from requirements.txt to here
+# dependencies = []
+
+[project.urls]
+"Homepage" = "https://mathvista.github.io/"
+"Bug Tracker" = "https://github.com/lupantech/MathVista/issues"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+
+[tool.setuptools.packages.find]
+exclude = [
+    "assets*",
+    "data*",
+    "_results*",
+    "results*",
+    "scripts*",
+    "jupyter_notebook_demos*",
+]
+
+[tool.wheel]
+exclude = [
+    "assets*",
+    "data*",
+    "_results*",
+    "results*",
+    "scripts*",
+    "jupyter_notebook_demos*",
+]
+
+[tool.pyright]
+exclude = [
+    "assets*",
+    "data*",
+    "_results*",
+    "results*",
+    "scripts*",
+    "jupyter_notebook_demos*",
+]
