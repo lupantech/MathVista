@@ -68,7 +68,7 @@ def normalize_extracted_answer(
 
     elif answer_type == 'float':
         try:
-            normalized_extraction = str(round(float(extraction), precision))
+            normalized_extraction = str(round(float(extraction), int(precision)))
         except Exception:
             normalized_extraction = None
 
