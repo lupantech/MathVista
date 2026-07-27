@@ -67,6 +67,7 @@ For more details, please refer to the project page with dataset exploration and 
   - 🥉 **[Grok-2 mini](https://x.ai/blog/grok-2)**
 
 ## 💥 News 💥
+- **[2026.07.27]** Added EvalScope as a community-maintained third-party evaluation tool for MathVista. See [Community-maintained EvalScope integration](#community-maintained-evalscope-integration) for supported split, scoring notes, and limitations.
 - **[2024.09.12]** 💥 **OpenAI o1 🥇 Sets New SOTA on MathVista with 73.9!** OpenAI’s latest large multimodal model breaks the 70% barrier on **MathVista**, setting a new SOTA. Read more on the [OpenAI blog](https://openai.com/index/learning-to-reason-with-llms/).
 - **[2024.06.20]** 💥 **Claude 3.5 Sonnet achieves new SOTA** on MathVista with **67.7**! Learn more at the [Anthropic blog](https://www.anthropic.com/news/claude-3-5-sonnet).
 - **[2024.05.13]** 💥 **OpenAI's GPT-4o Outperforms Humans on MathVista!** For the first time, OpenAI's new GPT-4o model has achieved a higher score than the human average on MathVista, scoring **63.8** compared to humans' **60.3**. Learn more at the [OpenAI blog](https://openai.com/index/hello-gpt-4o/).
@@ -367,6 +368,29 @@ We offer a few demo examples for using the dataset, as follows:
 - Use the Bard API for inference: [bard_local_demo.ipynb](https://github.com/lupantech/MathVista/blob/main/jupyter_notebook_demos/bard_local_demo.ipynb)
 
 Stay tuned for more demos coming soon!
+
+
+### Community-maintained EvalScope integration
+
+[EvalScope](https://github.com/modelscope/evalscope) provides a community-maintained third-party workflow for running MathVista against OpenAI-compatible model endpoints, with saved predictions, scores, and reports.
+
+```bash
+evalscope eval \
+  --model YOUR_MODEL \
+  --api-url OPENAI_API_COMPAT_URL \
+  --api-key EMPTY_TOKEN \
+  --datasets math_vista \
+  --limit 10
+```
+
+Integration notes:
+
+- Dataset and split: EvalScope uses the ModelScope mirror `evalscope/MathVista`; the default evaluation split is `testmini` with 1,000 examples, using 0-shot prompting.
+- Answer handling and scoring: multiple-choice samples are scored by option label; free-form answers are extracted with EvalScope's math parser and scored with EvalScope numeric-equivalence accuracy.
+- Score parity: no same-prediction score-parity report against the official MathVista evaluator is included yet.
+- Known differences and limitations: prompts, answer extraction, and score normalization may differ from the official three-stage MathVista evaluation pipeline. Use the official evaluator and leaderboard submission flow for leaderboard-equivalent results.
+
+EvalScope guide: https://evalscope.readthedocs.io/en/latest/benchmarks/math_vista.html
 
 ## 🔮 Evaluations on MathVista
 
