@@ -13,6 +13,32 @@ from tqdm import tqdm
 
 from utilities import read_json, save_json
 
+# Extractions that state there is no answer, e.g. "N/A", "Cannot be determined",
+# or "The question does not provide enough information to determine the answer."
+NON_ANSWER_PATTERN = re.compile(
+    r"^(n/?a|none|null|nan|unknown|no answer|undetermined|indeterminate"
+    r"|not (provided|given|applicable|available|determinable)"
+    r"|can(not|'t| not) (be )?(determined?|answered)"
+    r"|(insufficient|not enough) (information|data))$"
+    r"|^(the )?(question|text|image|figure|problem|information|data|context|graph|chart|diagram)\b"
+    r".*\b(not|no|insufficient|cannot|can't|unable)\b"
+    r".*\b(provide|enough|sufficient|given|determin|answer|information|clear|visible)",
+    re.IGNORECASE,
+)
+
+
+def is_non_answer(extraction, choices):
+    """
+    Check if the extraction is empty or states that there is no answer.
+    An option whose text is such a phrase (e.g. "None") still counts as an answer.
+    """
+    text = extraction.strip().strip('."\'').strip()
+    if not text:
+        return True
+    if any(text.lower() == str(choice).strip().lower() for choice in choices):
+        return False
+    return bool(NON_ANSWER_PATTERN.search(text))
+
 
 def get_most_similar(prediction, choices):
     """
@@ -40,8 +66,8 @@ def normalize_extracted_answer(
             except Exception:
                 extraction = ""
 
-        # if the extraction is empty, return None
-        if ignore_empty_extractions and not extraction:
+        # if the extraction is empty or states that there is no answer, return None
+        if ignore_empty_extractions and is_non_answer(extraction, choices):
             return None
 
         # extract "A" from "(A) text"
@@ -55,6 +81,15 @@ def normalize_extracted_answer(
         if extraction in sequential_characters:
             option_index = sequential_characters.index(extraction)
             normalized_extraction = choices[option_index]
+        elif (
+            ignore_empty_extractions
+            and len(extraction) == 1
+            and extraction.isalpha()
+            and extraction.upper() not in sequential_characters
+            and extraction not in choices
+        ):
+            # an option letter beyond the available choices, e.g. "C" for a yes/no question
+            return None
         else:
             # select the most similar option
             normalized_extraction = get_most_similar(extraction, choices)
@@ -118,7 +153,10 @@ def parse_args():
     parser.add_argument('--rerun', action='store_true', help='rerun the evaluation')
     parser.add_argument('--caculate_gain', action='store_true', help='caculate the socre gains over random guess')
     parser.add_argument(
-        '--ignore_empty_extractions', action='store_true', help='If true, ignore empty extractions, otherwise process'
+        '--ignore_empty_extractions',
+        action='store_true',
+        help='Score multiple-choice extractions that give no answer (empty, "N/A", "Cannot be determined", ...) '
+        'or an option letter outside the choices as wrong, instead of mapping them to the most similar option',
     )
     parser.add_argument('--random_file', type=str, default='score_random_guess.json')
     # output
