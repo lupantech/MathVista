@@ -1,7 +1,7 @@
 [project]
 name = "MathVista"
 version = "1.0"
-requires-python = ">= 3.9"
+requires-python = ">= 3.11"
 readme = "README.md"
 
 # TODO: Move dependencies from requirements.txt to here

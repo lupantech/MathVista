@@ -14,7 +14,7 @@ echo "conda activate mathvista" >> ~/.bashrc
 source /home/vscode/miniconda3/bin/activate
 
 # Create and activate mathvista environment
-conda create -n mathvista python=3.10 -y
+conda create -n mathvista python=3.11 -y
 conda activate mathvista
 
 # Install Nvidia Cuda Compiler
