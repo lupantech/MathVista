@@ -17,6 +17,7 @@ skip-string-normalization = true
 
 [tool.setuptools.packages.find]
 exclude = [
+    "tests*",
     "assets*",
     "data*",
     "_results*",
