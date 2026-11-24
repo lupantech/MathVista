@@ -284,7 +284,7 @@ def main():
             # the value is a list
             values = []
             for i in range(len(results_df)):
-                values += results_df[key][i]
+                values += results_df[key].iloc[i]
             values = list(set(values))
         else:
             values = results_df[key].unique()
